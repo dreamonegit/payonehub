@@ -17,5 +17,15 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/font-awesome/css/all.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/owl.carousel/assets/owl.carousel.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/owl.carousel/assets/owl.theme.default.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/front/vendor/daterangepicker/daterangepicker.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/front/css/stylesheet.css') }}" />
+
+<style>
+.throw_success{
+	color:green;
+}
+.throw_error{
+	color:red;
+}
+</style>
 </head>

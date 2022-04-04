@@ -192,15 +192,20 @@
             </form>
           </div>
           <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+		  <span class="throw_error"></span>
+		  <span class="throw_success"></span>
             <form id="signupForm" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" data-bv-field="number" id="signupEmail" required placeholder="Email ID">
+                <input type="text" name="name" class="form-control"  id="signupName" required placeholder="Your name">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" id="signupMobile" required placeholder="Mobile Number">
+                <input type="text" name="email" class="form-control" data-bv-field="number" id="signupEmail" required placeholder="Email ID">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="signuploginPassword" required placeholder="Password">
+                <input type="text" name="mobile" class="form-control" id="signupMobile" required placeholder="Mobile Number">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" id="signuploginPassword" required placeholder="Password">
               </div>
               <button class="btn btn-primary btn-block" type="submit">Signup</button>
             </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
+use App\Countries;
 use Session;
 use Redirect;
 
@@ -24,9 +25,13 @@ class IndexController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 	public function index(){
-	
 		$this->data['title'] = 'Home';
-		return view('admin.index', $this->data);
+		return view('front.index', $this->data);
+	}
+	public function profile(){
+		$this->data['title'] = 'Profile';
+		$this->data['country'] = Countries::all();
+		return view('front.profile', $this->data);		
 	}
 	public function logout(){
 		Auth::logout();

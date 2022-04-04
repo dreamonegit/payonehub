@@ -1,3 +1,4 @@
+  <?php use Illuminate\Support\Facades\Auth; ?>
   <!-- Header
   ============================================= -->
   <header id="header">
@@ -93,9 +94,13 @@
                 </li>
                 <li class="dropdown"> <a class="dropdown-toggle" href="#">Features</a>
                                  </li>
-               
-                <li class="login-signup ml-lg-2"><a class="pl-lg-4 pr-0" data-toggle="modal" data-target="#login-signup" href="#" title="Login / Sign up">Login / Sign up <span class="d-none d-lg-inline-block"><i class="fas fa-user"></i></span></a></li>
-              </ul>
+               @if(!Auth::check())
+					<li class="login-signup ml-lg-2"><a class="pl-lg-4 pr-0" data-toggle="modal" data-target="#login-signup" href="#" title="Login / Sign up">Login / Sign up <span class="d-none d-lg-inline-block"><i class="fas fa-user"></i></span></a></li>
+				@else
+					<li class="login-signup ml-lg-2"><a class="pl-lg-4 pr-0" href="{{ url('/profile') }}">Welcome  {{ auth::user()->name }}<span class="d-none d-lg-inline-block"><i class="fas fa-user"></i></span></a></li>
+					<li class="ml-lg-2"><a class="pl-lg-4 pr-0" href="{{ url('/logout') }}">Logout<span class="d-none d-lg-inline-block"></span></a></li>
+				@endif
+			  </ul>
             </div>
           </nav>
           <!-- Primary Navigation end --> 

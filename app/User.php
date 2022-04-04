@@ -36,4 +36,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+	
+	public static function emailexistornot($email){
+		
+		$count = User::where('email', $email)->count();
+		
+		return $count;
+	}
+	public static function login($data = array()){
+		return User::where('email',$data['email'])->first();
+	}
+	public static function emailmobilecheckexist($email,$mobile){
+		$message = '';
+		$emailcount = User::where('email',$email)->count();
+		if($emailcount > 0){
+			$message .= 'Email id is already exist please use another mail id..<br>';
+		}
+		
+		$mobilecount = User::where('mobile',$mobile)->count();
+		if($mobilecount > 0){
+			$message .= 'Mobile number is already exist please use another mobile number..';
+		}
+		return $message;
+	}
 }

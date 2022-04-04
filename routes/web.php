@@ -13,10 +13,67 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', 'IndexController@index');	
+Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Auth::routes();
+Route::get('/profile', 'IndexController@profile')->name('profile');
+Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
+Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
-	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');;
+	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');
+	Route::get('/clientlist', 'ClientController@clientlist')->name('admin')->middleware('admin');
+	Route::match(['get', 'post'], '/addclient','ClientController@addclient')->name('addclient')->middleware('admin');
+	Route::get('/editclient/{id}', 'ClientController@editclient')->name('admin')->middleware('admin');
+	Route::get('/deleteclient/{id}', 'ClientController@deleteclient')->name('admin')->middleware('admin');
 	Route::get('/user', 'UserController@index')->name('admin')->middleware('admin');
+	Route::get('/coupon', 'CouponController@index')->name('admin')->middleware('admin');
+	Route::match(['get', 'post'], '/addcoupon','CouponController@addcoupon')->name('addcoupon')->middleware('admin');
+	
+	Route::get('/list-testimonials', 'PageController@listtestimonials');
+	Route::get('/add-testimonials', 'PageController@addtestimonials');
+	Route::post('/save-testimonials', 'PageController@savetestimonials');
+	Route::get('/edit-testimonials/{id}', 'PageController@edittestimonials');
+	Route::get('/delete-testimonials/{id}', 'PageController@deletetestimonials');
+
+	Route::get('/list-faqs', 'PageController@listfaqs');
+	Route::get('/add-faqs', 'PageController@addfaqs');
+	Route::post('/save-faqs', 'PageController@savefaqs');
+	Route::get('/edit-faqs/{id}', 'PageController@editfaqs');
+	Route::get('/delete-faqs/{id}', 'PageController@deletefaqs');
+
+
+	Route::get('/list-categorys', 'PageController@listcategorys');
+	Route::get('/add-categorys', 'PageController@addcategorys');
+	Route::post('/save-categorys', 'PageController@savecategorys');
+	Route::get('/edit-categorys/{id}', 'PageController@editcategorys');
+	Route::get('/delete-categorys/{id}', 'PageController@deletecategorys');
+
+
+	Route::get('/list-subcategorys', 'PageController@listsubcategorys');
+	Route::get('/add-subcategorys', 'PageController@addsubcategorys');
+	Route::post('/save-subcategorys', 'PageController@savesubcategorys');
+	Route::get('/edit-subcategorys/{id}', 'PageController@editsubcategorys');
+	Route::get('/delete-subcategorys/{id}', 'PageController@deletesubcategorys');
+
+
+	Route::get('/list-cities', 'PageController@listcities');
+	Route::get('/add-cities', 'PageController@addcities');
+	Route::post('/save-cities', 'PageController@savecities');
+	Route::get('/edit-cities/{id}', 'PageController@editcities');
+	Route::get('/delete-cities/{id}', 'PageController@deletecities');
+
+
+	Route::get('/list-banners', 'PageController@listbanners');
+	Route::get('/add-banners', 'PageController@addbanners');
+	Route::post('/save-banners', 'PageController@savebanners');
+	Route::get('/edit-banners/{id}', 'PageController@editbanners');
+	Route::get('/delete-banners/{id}', 'PageController@deletebanners');
+
+
+	Route::get('/list-cms', 'PageController@listcms');
+	Route::get('/add-cms', 'PageController@addcms');
+	Route::post('/save-cms', 'PageController@savecms');
+	Route::get('/edit-cms/{id}', 'PageController@editcms');
+	Route::get('/delete-cms/{id}', 'PageController@deletecms');
 	Route::get('/home', 'HomeController@index');
-	Route::get('/logout', 'HomeController@logout');	
 });
+	Route::get('/logout', 'HomeController@logout');	
