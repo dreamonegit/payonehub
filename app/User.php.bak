@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -43,10 +44,10 @@ class User extends Authenticatable
 		
 		return $count;
 	}
-	public function login($data = array()){
+	public static function login($data = array()){
 		return User::where('email',$data['email'])->first();
 	}
-	public function emailmobilecheckexist($email,$mobile){
+	public static function emailmobilecheckexist($email,$mobile){
 		$message = '';
 		$emailcount = User::where('email',$email)->count();
 		if($emailcount > 0){
@@ -58,5 +59,24 @@ class User extends Authenticatable
 			$message .= 'Mobile number is already exist please use another mobile number..';
 		}
 		return $message;
+	}
+	public static function userlogin($username,$password){
+		$exist = 1;
+		$logcheck = User::where('email',$username)->where('password',Hash::make($password))->count();
+		if($logcheck==0){
+			$exist = 0;
+			$logcheck = User::where('mobile',$username)->where('password',Hash::make($password))->count();
+			if($logcheck==0){
+				$exist = 0;
+			}
+		}
+		echo $exist;
+		if($exist == 1){
+			$logcheck = User::where('mobile',$username)->orWhere('email',$username)->where('password',Hash::make($password))->first();
+			echo "<pre>"; print_r($logcheck);exit;
+			return array('status'=>false,'data'=>'');
+		}else{
+			return array('status'=>false,'msg'=>'Invalid email/mobile please check....');			
+		}
 	}
 }

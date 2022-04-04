@@ -172,12 +172,14 @@
         </ul>
         <div class="tab-content pt-4">
           <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+		  <span class="throw_log_error"></span>
+		  <span class="throw_log_success"></span>
             <form id="loginForm" method="post">
               <div class="form-group">
-                <input type="email" class="form-control" id="loginMobile" required placeholder="Mobile or Email ID">
+                <input type="text" class="form-control" id="loginusername" name="username" required placeholder="Mobile or Email ID">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" id="loginPassword" required placeholder="Password">
+                <input type="password" class="form-control" name="logpassword" id="loginPassword" required placeholder="Password">
               </div>
               <div class="row mb-4">
                 <div class="col-sm">

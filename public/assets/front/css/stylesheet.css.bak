@@ -2771,3 +2771,9 @@ select.form-control:not([size]):not([multiple]):not(.form-control-sm) {
 ._1O3W ul {
     clear: both;
 }
+.throw_success .throw_log_success{
+	color:green;
+}
+.throw_error throw_log_error{
+	color:red;
+}

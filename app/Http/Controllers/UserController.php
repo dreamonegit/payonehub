@@ -20,6 +20,37 @@ class UserController extends Controller
 		$this->data['title'] = 'User';
 		return view('admin.user', $this->data);
 	}
+	public function signin(Request $request){
+		$validator = Validator::make($request->all(), [
+			'username'	=> 'required',
+			'password' => 'required',
+		]);		
+		if ($validator->fails()) {
+			return Response::json(array(
+				'success' => false,
+				'errors' => $validator->getMessageBag()->toArray()
+
+			), 400);			
+		}else{
+			$login = 0;
+			if (Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
+				$login = 1;				
+			}elseif(Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
+				$login = 1;
+			}
+			if($login == 1){
+				return Response::json(array(
+					'success' => true,
+					'message' => 'Successfully register please wait.....'
+				), 200);
+			}else{
+				return Response::json(array(
+					'success' => false,
+					'errors' => array('Invalid email or mobile number pls enter valid information...')
+				), 400);
+			}				
+		}
+	}
 	public function signup(Request $request){
 		$validator = Validator::make($request->all(), [
 			'name'	=> 'required',

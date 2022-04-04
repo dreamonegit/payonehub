@@ -22,10 +22,16 @@
 
 <style>
 .throw_success{
-	color:green;
+	color:green!important;
 }
 .throw_error{
-	color:red;
+	color:red!important;
+}
+.throw_log_success{
+	color:green!important;
+}
+.throw_log_error{
+	color:red!important;
 }
 </style>
 </head>

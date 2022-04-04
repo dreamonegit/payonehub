@@ -21,6 +21,35 @@ $(function() {
 	  });
   });
 $(document).ready(function() {
+	
+    $('#loginForm').submit(function(event) { //Trigger on form submit
+        $('.throw_log_error').empty(); //Clear the messages first
+        $('.throw_log_success').empty();
+        var postForm = { //Fetch form data
+			"_token"	: "{{ csrf_token() }}",
+			'username'		: $('input[name=username]').val(),
+            'password'    : $('input[name=logpassword]').val()
+        };
+        $.ajax({ //Process the form using $.ajax()
+            type      : 'POST', //Method type
+            url       : '{{ url("/signin") }}', //Your form processing file URL
+            data      : postForm, //Forms name
+            dataType  : 'json',
+            success   : function(data) {
+				$('.throw_log_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
+				setTimeout(function() {
+					location.reload();
+				}, 3000);
+			},
+			error:function (response){
+				$.each(response.responseJSON.errors,function(field_name,error){
+					$('.throw_log_error').fadeIn(1000).append('<p>' +error+ '</p>');
+				});
+			},
+        });
+        event.preventDefault(); //Prevent the default submit
+    });
+	
     $('#signupForm').submit(function(event) { //Trigger on form submit
         $('.throw_error').empty(); //Clear the messages first
         $('.throw_success').empty();
@@ -40,7 +69,7 @@ $(document).ready(function() {
 				$('.throw_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
 				setTimeout(function() {
 					location.reload();
-				}, 5000);
+				}, 3000);
 			},
 			error:function (response){
 				$.each(response.responseJSON.errors,function(field_name,error){

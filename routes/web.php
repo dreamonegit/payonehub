@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', 'IndexController@index');	
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
+Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
 Auth::routes();
 Route::get('/profile', 'IndexController@profile')->name('profile');
 Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
