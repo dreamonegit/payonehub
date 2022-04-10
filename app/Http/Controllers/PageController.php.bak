@@ -13,6 +13,8 @@ use App\Subcategorys;
 use App\Cities;
 use App\Banners;
 use App\Cms;
+use App\Contactus;
+use App\Kycinformations;
 use DB;
 class PageController extends Controller
 {
@@ -26,6 +28,8 @@ class PageController extends Controller
 		$this->cities = new Cities();
 		$this->banners = new Banners();
 		$this->cms = new Cms();
+		$this->contactus = new Contactus();
+		$this->kycinformations = new Kycinformations();
     }    
 	public function index(){
 	
@@ -57,7 +61,7 @@ class PageController extends Controller
 		$testimonials->description = $request->input('description');
 		$testimonials->status = $request->input('status');
         $testimonials->save();
-		return redirect('/list-testimonials')->with('message', 'Testimonials successfully created...');	
+		return redirect('/admin/list-testimonials')->with('message', 'Testimonials successfully created...');	
 	}
      public function edittestimonials($id)
     {
@@ -66,7 +70,7 @@ class PageController extends Controller
     }
 	public function deletetestimonials($id){
 		$testimonials = $this->testimonials->where('id',$id)->delete();
-		return redirect('/list-testimonials');
+		return redirect('/admin/list-testimonials');
 	}
 	public function listfaqs(){
 	$this->data["faqs"] = $this->faqs->get();
@@ -93,7 +97,7 @@ class PageController extends Controller
 		$faqs->description = $request->input('description');
 		$faqs->status = $request->input('status');
         $faqs->save();
-		return redirect('/list-faqs')->with('message', 'Faq successfully created...');	
+		return redirect('/admin/list-faqs')->with('message', 'Faq successfully created...');	
 	}
      public function editfaqs($id)
     {
@@ -102,7 +106,7 @@ class PageController extends Controller
     }
 	public function deletefaqs($id){
 		$faqs = $this->faqs->where('id',$id)->delete();
-		return redirect('/list-faqs');
+		return redirect('/admin/list-faqs');
 	}
 	public function listcategorys(){
 	$this->data["categorys"] = $this->categorys->get();
@@ -131,7 +135,7 @@ class PageController extends Controller
 		$categorys->meta_description = $request->input('meta_description');
 		$categorys->status = $request->input('status');
         $categorys->save();
-		return redirect('/list-categorys')->with('message', 'Categorys successfully created...');	
+		return redirect('/admin/list-categorys')->with('message', 'Categorys successfully created...');	
 	}
      public function editcategorys($id)
     {
@@ -140,7 +144,7 @@ class PageController extends Controller
     }
 	public function deletecategorys($id){
 		$categorys = $this->categorys->where('id',$id)->delete();
-		return redirect('/list-categorys');
+		return redirect('/admin/list-categorys');
 	}
 	public function listsubcategorys(){
 	$this->data["subcategorys"] = $this->subcategorys->with('getcategorys')->get();
@@ -171,7 +175,7 @@ class PageController extends Controller
 		$subcategorys->meta_description = $request->input('meta_description');
 		$subcategorys->status = $request->input('status');
         $subcategorys->save();
-		return redirect('/list-subcategorys')->with('message', 'Subcategorys successfully created...');	
+		return redirect('/admin/list-subcategorys')->with('message', 'Subcategorys successfully created...');	
 	}
      public function editsubcategorys($id)
     {
@@ -181,7 +185,7 @@ class PageController extends Controller
     }
 	public function deletesubcategorys($id){
 		$subcategorys = $this->subcategorys->where('id',$id)->delete();
-		return redirect('/list-subcategorys');
+		return redirect('/admin/list-subcategorys');
 	}
 	public function listcities(){
 	$this->data["cities"] = $this->cities->get();
@@ -207,7 +211,7 @@ class PageController extends Controller
         $cities->city_name = $request->input('city_name');		
 		$cities->status = $request->input('status');
         $cities->save();
-		return redirect('/list-cities')->with('message', 'Cities successfully created...');	
+		return redirect('/admin/list-cities')->with('message', 'Cities successfully created...');	
 	}
      public function editcities($id)
     {
@@ -216,7 +220,7 @@ class PageController extends Controller
     }
 	public function deletecities($id){
 		$cities = $this->cities->where('id',$id)->delete();
-		return redirect('/list-cities');
+		return redirect('/admin/list-cities');
 	}
 	public function listbanners(){
 	$this->data["banners"] = $this->banners->get();
@@ -247,7 +251,7 @@ class PageController extends Controller
 		$banners->description = $request->input('description');
 		$banners->status = $request->input('status');
 		$banners->save();
-		return redirect('/list-banners')->with('message', 'Topics successfully created...');
+		return redirect('/admin/list-banners')->with('message', 'Topics successfully created...');
 	}
      public function editbanners($id)
     {
@@ -256,7 +260,7 @@ class PageController extends Controller
     }
 	public function deletebanners($id){
 		$banners = $this->banners->where('id',$id)->delete();
-		return redirect('/list-banners');
+		return redirect('/admin/list-banners');
 	}
 	public function listcms(){
 	$this->data["cms"] = $this->cms->get();
@@ -287,7 +291,7 @@ class PageController extends Controller
 		$cms->meta_description = $request->input('meta_description');
 		$cms->status = $request->input('status');
         $cms->save();
-		return redirect('/list-cms')->with('message', 'Cms successfully created...');	
+		return redirect('/admin/list-cms')->with('message', 'Cms successfully created...');	
 	}
      public function editcms($id)
     {
@@ -296,6 +300,62 @@ class PageController extends Controller
     }
 	public function deletecms($id){
 		$cms = $this->cms->where('id',$id)->delete();
-		return redirect('/list-cms');
+		return redirect('/admin/list-cms');
+	}
+	public function listcontactus()
+    {
+        $this->data['contactus'] = $this->contactus->get();
+        return view('admin.list-contactus',$this->data);
+    }	
+    public function savecontactus(Request $request)
+    {
+        if ($request->input("id") != 0) {
+            $contactus = Contactus::where('id', $request->input('id'))->first();
+        } else {
+            $contactus = new Contactus();
+        }
+		
+        $contactus->name = $request->input('name');
+        $contactus->email = $request->input('email');
+		 $contactus->mobile = $request->input('mobile');
+		$contactus->message = $request->input('message');
+        if ($contactus->save()) {
+            return redirect('/contactus')->withErrors(['sucessfully updated',]);
+        } else {
+            return redirect('/contactus')->withErrors(['Failed']);
+        }
+    }
+	public function deletecontactus($id){
+		$contactus = $this->contactus->where('id',$id)->delete();
+		return redirect('/admin/list-contactus');
+	}
+	public function listkycinformations()
+    {
+        $this->data['kycinformations'] = $this->kycinformations->get();
+        return view('admin.list-kycinformations)',$this->data);
+    }
+    public function savekycinformations(Request $request)
+    {
+        if ($request->input("id") != 0) {
+            $kycinformations = Kycinformations::where('id', $request->input('id'))->first();
+        } else {
+            $kycinformations = new Kycinformations();
+        }
+		
+        $kycinformations->aadharfront = $request->input('aadharfront');
+        $kycinformations->aadharback = $request->input('aadharback');
+		$kycinformations->aadharnumber = $request->input('aadharnumber');
+		$kycinformations->panfront = $request->input('panfront');
+		$kycinformations->panback = $request->input('panback');
+		$kycinformations->pannumber = $request->input('pannumber');
+        if ($kycinformations->save()) {
+            return redirect('/list-kycinformations')->withErrors(['sucessfully updated',]);
+        } else {
+            return redirect('/list-kycinformations')->withErrors(['Failed']);
+        }
+    }
+	public function deletekycinformations($id){
+		$kycinformations = $this->kycinformations->where('id',$id)->delete();
+		return redirect('/admin/list-contactus');
 	}
 }

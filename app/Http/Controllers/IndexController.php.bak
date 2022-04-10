@@ -33,6 +33,10 @@ class IndexController extends Controller
 		$this->data['country'] = Countries::all();
 		return view('front.profile', $this->data);		
 	}
+    public function contactus()
+    {
+        return view'front.contactus');
+    }
 	public function logout(){
 		Auth::logout();
 		Session::flush();

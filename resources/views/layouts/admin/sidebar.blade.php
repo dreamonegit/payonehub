@@ -84,6 +84,18 @@
                     <div data-i18n="Connections">FAQ</div>
                   </a>
                 </li>
+                <li class="menu-item">
+                  <a href="{{ url('/admin/list-contactus') }}" class="menu-link">
+				  <i class="menu-icon tf-icons bx bx-phone"></i>
+                    <div data-i18n="Connections">Contactus</div>
+                  </a>
+                </li>
+				 <li class="menu-item">
+                  <a href="{{ url('/admin/list-kycinformations') }}" class="menu-link">
+				  <i class="menu-icon tf-icons bx bx-id-card"></i>
+                    <div data-i18n="Connections">KYC</div>
+                  </a>
+                </li>
 
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">

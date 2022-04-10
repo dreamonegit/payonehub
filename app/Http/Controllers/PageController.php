@@ -13,6 +13,8 @@ use App\Subcategorys;
 use App\Cities;
 use App\Banners;
 use App\Cms;
+use App\Contactus;
+use App\Kycinformations;
 use DB;
 class PageController extends Controller
 {
@@ -26,6 +28,8 @@ class PageController extends Controller
 		$this->cities = new Cities();
 		$this->banners = new Banners();
 		$this->cms = new Cms();
+		$this->contactus = new Contactus();
+		$this->kycinformations = new Kycinformations();
     }    
 	public function index(){
 	
@@ -297,5 +301,61 @@ class PageController extends Controller
 	public function deletecms($id){
 		$cms = $this->cms->where('id',$id)->delete();
 		return redirect('/admin/list-cms');
+	}
+	public function listcontactus()
+    {
+        $this->data['contactus'] = $this->contactus->get();
+        return view('admin.list-contactus',$this->data);
+    }	
+    public function savecontactus(Request $request)
+    {
+        if ($request->input("id") != 0) {
+            $contactus = Contactus::where('id', $request->input('id'))->first();
+        } else {
+            $contactus = new Contactus();
+        }
+		
+        $contactus->name = $request->input('name');
+        $contactus->email = $request->input('email');
+		 $contactus->mobile = $request->input('mobile');
+		$contactus->message = $request->input('message');
+        if ($contactus->save()) {
+            return redirect('/contactus')->withErrors(['sucessfully updated',]);
+        } else {
+            return redirect('/contactus')->withErrors(['Failed']);
+        }
+    }
+	public function deletecontactus($id){
+		$contactus = $this->contactus->where('id',$id)->delete();
+		return redirect('/admin/list-contactus');
+	}
+	public function listkycinformations()
+    {
+        $this->data['kycinformations'] = $this->kycinformations->get();
+        return view('admin.list-kycinformations',$this->data);
+    }
+    public function savekycinformations(Request $request)
+    {
+        if ($request->input("id") != 0) {
+            $kycinformations = Kycinformations::where('id', $request->input('id'))->first();
+        } else {
+            $kycinformations = new Kycinformations();
+        }
+		
+        $kycinformations->aadharfront = $request->input('aadharfront');
+        $kycinformations->aadharback = $request->input('aadharback');
+		$kycinformations->aadharnumber = $request->input('aadharnumber');
+		$kycinformations->panfront = $request->input('panfront');
+		$kycinformations->panback = $request->input('panback');
+		$kycinformations->pannumber = $request->input('pannumber');
+        if ($kycinformations->save()) {
+            return redirect('/list-kycinformations')->withErrors(['sucessfully updated',]);
+        } else {
+            return redirect('/list-kycinformations')->withErrors(['Failed']);
+        }
+    }
+	public function deletekycinformations($id){
+		$kycinformations = $this->kycinformations->where('id',$id)->delete();
+		return redirect('/admin/list-contactus');
 	}
 }

@@ -29,7 +29,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0">Add Banners</h5>
                     </div>
-				 <form class="form-horizontal" method="post" id="banners" enctype="multipart/form-data" action="{{ url('admin/save-banners') }}">{{ csrf_field() }}
+				 <form class="form-horizontal" method="post" name="banners" enctype="multipart/form-data" action="{{ url('admin/save-banners') }}">{{ csrf_field() }}
 					@if(isset($faqs))
 					<input type="hidden" name="id" value="{{$banners->id}}">
 					@else
@@ -97,35 +97,3 @@
 
             <!-- Footer -->
 		@include('layouts.admin.footer')
- <script>
-     $('#banners').validate({ // initialize the plugin
-        ignore: ".ignore",
-        rules: {
-
-            title: {
-                required: true
-            },
-			name: {
-                required: true
-            },
-            description: {
-                required: true
-            }
-
-        },
-        messages:{
-
-            title:{
-                required:"title is required"
-            },
-             name:{
-                required:"name is required"
-            },
-            description:{
-                required:"Description is required"
-            }
-
-
-        }
-    });
- </script>

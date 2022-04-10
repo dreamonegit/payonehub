@@ -15,9 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'IndexController@index');	
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
+Route::get('/contactus', 'IndexController@contactus');
+
 Auth::routes();
 Route::get('/profile', 'IndexController@profile')->name('profile');
 Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
+Route::post('/update-kyc', 'UserController@updatekyc')->name('updatekyc');
 Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');
@@ -68,13 +71,22 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::post('/save-banners', 'PageController@savebanners');
 	Route::get('/edit-banners/{id}', 'PageController@editbanners');
 	Route::get('/delete-banners/{id}', 'PageController@deletebanners');
-
-
-	Route::get('/list-cms', 'PageController@listcms');
+	
+    Route::get('/list-cms', 'PageController@listcms');
 	Route::get('/add-cms', 'PageController@addcms');
 	Route::post('/save-cms', 'PageController@savecms');
 	Route::get('/edit-cms/{id}', 'PageController@editcms');
 	Route::get('/delete-cms/{id}', 'PageController@deletecms');
+	
+	Route::get('/list-contactus', 'PageController@listcontactus');
+	Route::post('/save-contactus', 'PageController@savecontactus');
+	Route::get('/delete-contactus/{id}', 'PageController@deletecontactus');	
+	
+	Route::get('/list-kycinformations', 'PageController@listkycinformations');
+	Route::post('/save-kycinformations', 'PageController@savekycinformations');
+	Route::get('/delete-kycinformations/{id}', 'PageController@deletekycinformations');
+	
+	
 	Route::get('/home', 'HomeController@index');
 });
 	Route::get('/logout', 'HomeController@logout');	

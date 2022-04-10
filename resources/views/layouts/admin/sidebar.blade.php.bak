@@ -56,19 +56,19 @@
             </li>
                 <li class="menu-item">
                   <a href="{{ url('/admin/list-cities') }}" class="menu-link">
-				  <i class="bx bxs-city"></i>
+				  <i class="menu-icon tf-icons bx bxs-city"></i>
                     <div data-i18n="Connections">City</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{ url('/admin/list-banners') }}" class="menu-link">
-				  <i class="bx bxs-image"></i>
+				  <i class="menu-icon tf-icons bx bxs-image"></i>
                     <div data-i18n="Connections">Banners</div>
                   </a>
                 </li>
                 <li class="menu-item">
                   <a href="{{ url('/admin/list-cms') }}" class="menu-link">
-				  <i class="bx bx-file"></i>
+				  <i class="menu-icon tf-icons bx bx-file"></i>
                     <div data-i18n="Connections">Cms</div>
                   </a>
                 </li>
@@ -82,6 +82,18 @@
                   <a href="{{ url('/admin/list-faqs') }}" class="menu-link">
 				  <i class="menu-icon tf-icons bx bx-message-alt-detail"></i>
                     <div data-i18n="Connections">FAQ</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="{{ url('/admin/list-contactus') }}" class="menu-link">
+				  <i class="menu-icon tf-icons bx bx-phone"></i>
+                    <div data-i18n="Connections">Contactus</div>
+                  </a>
+                </li>
+				 <li class="menu-item">
+                  <a href="{{ url('/admin/list-kycinformations') }}" class="menu-link">
+				  <i class="menu-icon tf-icons bx bx-id-card-o"></i>
+                    <div data-i18n="Connections">KYC</div>
                   </a>
                 </li>
 
