@@ -5,18 +5,20 @@ use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
 use Storage;
+use Session;
 use Auth, Validator, Response;
 use App\User;
 use App\Countries;
 use App\Kycinformations;
 use DB;
+use Redirect;
 
 class UserController extends Controller
 {
     public function __construct()
     {
         $this->user = new User();
-		 $this->kycinformations = new Kycinformations();
+		$this->kycinformations = new Kycinformations();
     }    
 	public function index(){
 	
@@ -38,7 +40,7 @@ class UserController extends Controller
 			$login = 0;
 			if (Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
 				$login = 1;				
-			}elseif(Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
+			}elseif(Auth::attempt(['mobile' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
 				$login = 1;
 			}
 			if($login == 1){
@@ -117,53 +119,51 @@ class UserController extends Controller
 		return redirect()->back()->with('message', 'Successfully password is updated...');  		
 	}
 	public function updatekyc(Request $request){
-		            $image = $aadharimagesfront = $aadharimagesback = $panimagesfront = $panimagespanback ='';
-                         if ($request->file('aadharfront')) {
-							$image = $request->file('aadharfront');
-							$aadharimagesfront = 'Aadharfront' . time() . '_' . $image->getClientOriginalName();
-							$image_resize = Image::make($image->getRealPath());              
-							$image_resize->save(storage_path('app/public/aadhar/' .$aadharimagesfront));
-						}
-						if ($request->file('aadharback')) {
-							$image = $request->file('aadharback');
-							$aadharimagesback = 'Aadharback' . time() . '_' . $image->getClientOriginalName();
-							$image_resize = Image::make($image->getRealPath());              
-							$image_resize->save(storage_path('app/public/aadhar/' .$aadharimagesback));
-						}
-						if ($request->file('panfront')) {
-							$image = $request->file('panfront');
-							$panimagesfront = 'Panfront' . time() . '_' . $image->getClientOriginalName();
-							$image_resize = Image::make($image->getRealPath());              
-							$image_resize->save(storage_path('app/public/pan/' .$panimagesfront));
-						}
-						if ($request->file('panback')) {
-							$image = $request->file('panback');
-							$panimagespanback = 'Panback' . time() . '_' . $image->getClientOriginalName();
-							$image_resize = Image::make($image->getRealPath());              
-							$image_resize->save(storage_path('app/public/pan/' .$panimagespanback));
-						}	
-						   $count = Kycinformations::where('user_id',auth::user()->id)->count();
-						   
-						   if ($count>0){
-						   
-						   $kycinformations = Kycinformations::where('user_id',auth::user()->id)->first();
-						   
-						   }
-						   else{
-							   
-							$kycinformations = new Kycinformations();   
-                            
-							}
-							
-							$kycinformations->user_id = auth::user()->id;
-							$kycinformations->aadharnumber = $request->input("aadharnumber");
-							$kycinformations->pannumber= $request->input("pannumber");
- 						    $kycinformations->aadharfront = $aadharimagesfront;
-							$kycinformations->aadharback = $aadharimagesback;
-							$kycinformations->panfront = $panimagesfront;
-							$kycinformations->panback = $panimagespanback;
-							$kycinformations->save();	
-		                  return redirect()->back()->with('message', 'Successfully profile is update...');  		
-	               }
+		$image = $aadharimagesfront = $aadharimagesback = $panimagesfront = $panimagespanback ='';
+		if ($request->file('aadharfront')) {
+			$image = $request->file('aadharfront');
+			$aadharimagesfront = 'Aadharfront' . time() . '_' . $image->getClientOriginalName();
+			$image_resize = Image::make($image->getRealPath());              
+			$image_resize->save(storage_path('app/public/aadhar/' .$aadharimagesfront));
+		}
+		if ($request->file('aadharback')) {
+			$image = $request->file('aadharback');
+			$aadharimagesback = 'Aadharback' . time() . '_' . $image->getClientOriginalName();
+			$image_resize = Image::make($image->getRealPath());              
+			$image_resize->save(storage_path('app/public/aadhar/' .$aadharimagesback));
+		}
+		if ($request->file('panfront')) {
+			$image = $request->file('panfront');
+			$panimagesfront = 'Panfront' . time() . '_' . $image->getClientOriginalName();
+			$image_resize = Image::make($image->getRealPath());              
+			$image_resize->save(storage_path('app/public/pan/' .$panimagesfront));
+		}
+		if ($request->file('panback')) {
+			$image = $request->file('panback');
+			$panimagespanback = 'Panback' . time() . '_' . $image->getClientOriginalName();
+			$image_resize = Image::make($image->getRealPath());              
+			$image_resize->save(storage_path('app/public/pan/' .$panimagespanback));
+		}	
+		   $count = Kycinformations::where('user_id',auth::user()->id)->count();
+		   if ($count>0){
+				$kycinformations = Kycinformations::where('user_id',auth::user()->id)->first();
+		   }else{
+				$kycinformations = new Kycinformations();   
+			}
+			$kycinformations->user_id = auth::user()->id;
+			$kycinformations->aadharnumber = $request->input("aadharnumber");
+			$kycinformations->pannumber= $request->input("pannumber");
+			$kycinformations->aadharfront = $aadharimagesfront;
+			$kycinformations->aadharback = $aadharimagesback;
+			$kycinformations->panfront = $panimagesfront;
+			$kycinformations->panback = $panimagespanback;
+			$kycinformations->save();	
+		  return redirect()->back()->with('message', 'Successfully profile is update...');  		
+	}
+	public function logout(){
+		Auth::logout();
+		Session::flush();
+		return Redirect::to('/');		
+	}
 
 }

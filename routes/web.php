@@ -16,12 +16,14 @@ Route::get('/', 'IndexController@index');
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
 Route::get('/contactus', 'IndexController@contactus');
-
 Auth::routes();
-Route::get('/profile', 'IndexController@profile')->name('profile');
-Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
-Route::post('/update-kyc', 'UserController@updatekyc')->name('updatekyc');
-Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
+Route::middleware(['user'])->group(function () {
+	Route::get('/profile', 'IndexController@profile')->name('profile');
+	Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
+	Route::post('/update-kyc', 'UserController@updatekyc')->name('updatekyc');
+	Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
+	Route::get('/logout', 'UserController@logout');	
+});
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');
 	Route::get('/clientlist', 'ClientController@clientlist')->name('admin')->middleware('admin');
@@ -85,8 +87,6 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::get('/list-kycinformations', 'PageController@listkycinformations');
 	Route::post('/save-kycinformations', 'PageController@savekycinformations');
 	Route::get('/delete-kycinformations/{id}', 'PageController@deletekycinformations');
-	
-	
+	Route::get('/logout', 'HomeController@logout');	
 	Route::get('/home', 'HomeController@index');
 });
-	Route::get('/logout', 'HomeController@logout');	

@@ -51,11 +51,11 @@
                     <form id="personalInformation" method="post" action="{{ url('/updateprofile') }}">@csrf
                       <div class="mb-3">
                         <div class="custom-control custom-radio custom-control-inline">
-                          <input id="male" name="gender" class="custom-control-input" value="male" @if(auth::user()->gender=='male') "checked" @endif required type="radio">
+                          <input id="male" name="gender" class="custom-control-input" value="male" @if(auth::user()->gender=='male') checked @endif required type="radio">
                           <label class="custom-control-label" for="male">Male</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                          <input id="female" name="gender" class="custom-control-input" value="female" @if(auth::user()->gender=='female') "checked" @endif required type="radio">
+                          <input id="female" name="gender" class="custom-control-input" value="female" @if(auth::user()->gender=='female') checked @endif required type="radio">
                           <label class="custom-control-label" for="female">Female</label>
                         </div>
                       </div>
@@ -129,7 +129,12 @@
                       <hr>
                       <p class="mb-2">Billing Enquiries</p>
                       <p class="text-1 mb-0">Do not hesitate to reach our <a href="#">support team</a> if you have any queries.</p>
-                    </div>
+					   <hr>
+					   @if($aadhar)
+						<p class="mb-2">Aadhar Documents</p>
+					    <p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharfront) }}">Aadhar Front</a>.</p>
+						@endif
+					</div>
                   </div>
                 </div>
               </div>
@@ -310,7 +315,7 @@
                       </div>
                       <div class="form-group">
                         <label for="aadharnumber">Aadhar card number</label>
-                        <input type="text" value="" name="aadharnumber" class="form-control" data-bv-field="aadharnumber" id="aadharnumber" required placeholder="Aadhar number">
+                        <input type="text" value="<?php if(isset($aadhar->aadharnumber)){ echo $aadhar->aadharnumber; } ?>" name="aadharnumber" class="form-control" data-bv-field="aadharnumber" id="aadharnumber" required placeholder="Aadhar number">
                       </div>
                       <div class="form-group">
                         <label for="pan">Pan card front image</label>
@@ -322,7 +327,7 @@
                       </div>
                       <div class="form-group">
                         <label for="pannumber">Pan number</label>
-                        <input id="pannumber" value="" name="pannumber" type="text" class="form-control" required placeholder="Pan Number">
+                        <input id="pannumber" value="<?php if(isset($aadhar->aadharnumber)){ echo $aadhar->pannumber; } ?>" name="pannumber" type="text" class="form-control" required placeholder="Pan Number">
                       </div>
                       <button class="btn btn-primary" type="submit">Update Now</button>
                     </form>
@@ -334,7 +339,17 @@
                       <hr>
                       <p class="mb-2">Billing Enquiries</p>
                       <p class="text-1 mb-0">Do not hesitate to reach our <a href="#">support team</a> if you have any queries.</p>
-                    </div>
+					   <hr>
+					   @if($aadhar)
+						<p class="mb-2">Aadhar Documents</p>
+					    <p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharfront) }}" target="_blank">Aadhar Front</a>.</p>
+						<p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharback) }}" target="_blank">Aadhar Back</a>.</p>
+
+						<p class="mb-2">Pan Documents</p>
+					    <p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panfront) }}" target="_blank">Pan Front</a>.</p>
+						<p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panback) }}" target="_blank">Pan Back</a>.</p>
+						@endif
+					</div>
                   </div>
                 </div>  
      
