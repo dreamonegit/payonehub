@@ -159,7 +159,7 @@ class UserController extends Controller
 			$kycinformations->panback = $panimagespanback;
 			$kycinformations->save();	
 		  return redirect()->back()->with('message', 'Successfully profile is update...');  		
-	               }
+	}
 	public function logout(){
 		Auth::logout();
 		Session::flush();

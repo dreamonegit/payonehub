@@ -89,4 +89,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::get('/delete-kycinformations/{id}', 'PageController@deletekycinformations');
 	Route::get('/logout', 'HomeController@logout');	
 	Route::get('/home', 'HomeController@index');
+	Route::get('/myprofile', 'AdminController@myprofile');
+	Route::post('/updateprofile', 'AdminController@updateprofile');
+	
 });
