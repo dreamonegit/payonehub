@@ -165,5 +165,10 @@ class UserController extends Controller
 							$kycinformations->save();	
 		                  return redirect()->back()->with('message', 'Successfully profile is update...');  		
 	               }
+	public function logout(){
+		Auth::logout();
+		Session::flush();
+		return Redirect::to('/admin');		
+	}
 
 }

@@ -91,5 +91,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeController@index');
 	Route::get('/myprofile', 'AdminController@myprofile');
 	Route::post('/updateprofile', 'AdminController@updateprofile');
+	Route::get('/resetpassword', 'AdminController@resetpassword');
+	Route::post('/updatepassword', 'AdminController@updatepassword');
+	
 	
 });

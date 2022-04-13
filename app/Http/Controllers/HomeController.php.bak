@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Storage;
 use Auth, Validator;
 use App\User;
 use DB;
 use Session;
+use Redirect;
 
 class HomeController extends Controller
 {
@@ -33,7 +35,7 @@ class HomeController extends Controller
 	}
 	public function logout(){
 		Auth::logout();
-		Session::flush();
+		
 		return Redirect::to('/admin');		
 	}
 }

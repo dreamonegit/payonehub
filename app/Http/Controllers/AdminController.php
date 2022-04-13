@@ -41,4 +41,28 @@ class AdminController extends Controller
 		$user->save();
 		return redirect()->back()->with('message', 'Successfully profile is update...');  		
 	}
+	public function resetpassword(Request $request){
+		$this->data['title'] = 'Reset Password';
+		return view('admin.resetpassword', $this->data);		
+	}
+	public function updatepassword(Request $request){
+		$validator  =   Validator::make($request->all(), [
+			 'current_password'     =>  'required',
+			 'new_password'    =>  'required',
+			 'new_confirm_password'   =>  'same:new_password',
+		 ]);                                                                                                                                                                                                                               
+		if ($validator->fails()) {
+			   $messages = $validator->messages();
+			   return redirect()->back()->withErrors($messages)->withInput($request->all()); 
+		 }   
+		 if (!Hash::check($request->current_password, auth()->user()->password)) { 
+		 
+			return redirect()->back()->with('message', 'Current password is wrong...'); 
+			
+		 }
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+		
+		return redirect()->back()->with('message', 'Successfully password is updated...');  		
+	}
+
 }
