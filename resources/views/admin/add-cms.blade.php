@@ -106,13 +106,16 @@
 @include('layouts.admin.footer')
 
  <script>
-     $('#categorys').validate({ // initialize the plugin
+     $('#cms').validate({ // initialize the plugin
         ignore: ".ignore",
         rules: {
-            catname: {
+            title: {
                 required: true
             },
             description: {
+                required: true
+            },
+            meta_keyword: {
                 required: true
             },
             meta_title: {
@@ -121,15 +124,18 @@
         },
         messages:{
  
-            catname:{
-                required:"Name is required"
+            title:{
+                required:"Title is required"
             },
             description:{
                 required:"Description is required"
             },
+            meta_keyword:{
+                required:"Meta Keyword is required"
+            },
             meta_title:{
-                required:"Title is required"
-            }
+                required:"Meta Title is required"
+            },
 
         }
     });

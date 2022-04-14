@@ -29,7 +29,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0">Add categorys</h5>
                     </div>
-				 <form class="form-horizontal" method="post" id="categorys" enctype="multipart/form-data" action="{{ Url('save-categorys') }}">{{ csrf_field() }}
+				 <form class="form-horizontal" method="post" id="categorys" enctype="multipart/form-data" action="{{ Url('admin/save-categorys') }}">{{ csrf_field() }}
 					@if(isset($categorys))
 					<input type="hidden" name="id" value="{{$categorys->id}}">
 					@else
@@ -110,6 +110,12 @@
             },
             meta_title: {
                 required: true
+            },
+            meta_keyword: {
+                required: true
+            },
+            meta_description: {
+                required: true
             }
         },
         messages:{
@@ -122,6 +128,12 @@
             },
             meta_title:{
                 required:"Title is required"
+            },
+            meta_keyword:{
+                required:"Keyword is required"
+            },
+            meta_description:{
+                required:"Description is required"
             }
 
         }

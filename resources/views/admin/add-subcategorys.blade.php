@@ -49,7 +49,7 @@
                           <label class="form-label" for="basic-icon-default-fullname">Subcat Name</label>
                           <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class=""></i></span>
-                            <input type="text" name="subcat_name" class="form-control" id="subcat_name" placeholder="Ender the Subcat Name"aria-label="Sub Name" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->subcat_name)) {{ $subcategorys->subcat_name }} @endif"/>
+                            <input type="text" name="subcat_name" class="form-control" id="subcat_name" placeholder="Enter the Subcat Name"aria-label="Sub Name" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->subcat_name)) {{ $subcategorys->subcat_name }} @endif"/>
                           </div>
                         </div>
                         <div class="mb-3">
@@ -63,14 +63,14 @@
                           <label class="form-label" for="basic-icon-default-fullname">Meta Title</label>
                           <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-name"></i></span>
-                            <input type="text" name="meta_title" class="form-control" id="meta_title" placeholder="Ender the Subcat Title"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->meta_title)) {{ $subcategorys->meta_title }} @endif"/>
+                            <input type="text" name="meta_title" class="form-control" id="meta_title" placeholder="Enter the Subcat Title"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->meta_title)) {{ $subcategorys->meta_title }} @endif"/>
                           </div>
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="basic-icon-default-fullname">Meta Keyword</label>
                           <div class="input-group input-group-merge">
                             <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-title"></i></span>
-                            <input type="text" name="meta_keyword" class="form-control" id="basic-icon-default-fullname" placeholder="Ender the Keyword"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->meta_keyword)) {{ $subcategorys->meta_keyword }} @endif"/>
+                            <input type="text" name="meta_keyword" class="form-control" id="basic-icon-default-fullname" placeholder="Enter the Keyword"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="@if(isset($subcategorys->meta_keyword)) {{ $subcategorys->meta_keyword }} @endif"/>
                           </div>
                         </div>
                       <div class="mb-3">
@@ -119,6 +119,9 @@
             },
             meta_title: {
                 required: true
+            },
+            meta_keyword: {
+                required: true
             }
         },
         messages:{
@@ -127,10 +130,10 @@
                 required:"Name is required"
             },
             meta_description:{
-                required:"Description is required"
+                required:"Meta Description is required"
             },
-            meta_title:{
-                required:"Title is required"
+            meta_keyword:{
+                required:"Meta keyword is required"
             }
 
         }

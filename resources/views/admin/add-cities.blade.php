@@ -39,7 +39,7 @@
                         <div class="mb-3">
                           <label class="form-label" for="basic-icon-default-fullname">City Name</label>
                           <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
+                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-"></i></span>
                             <input type="text" name="city_name" class="form-control" id="basic-icon-default-fullname" placeholder="Enter the Ciy Name"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2" value="@if(isset($cities->city_name)) {{ $cities->city_name }} @endif"/>
                           </div>
                         </div>
@@ -69,27 +69,21 @@
 
             <!-- Footer -->
 @include('layouts.admin.footer')
-
  <script>
      $('#cities').validate({ // initialize the plugin
         ignore: ".ignore",
         rules: {
             city_name: {
                 required: true
-            },
-            status: {
-                required: true
             }
+
         },
         messages:{
  
             city_name:{
                 required:"City name is required"
-            },
-
-            status:{
-                required:"Status is required"
             }
+
 
         }
     });

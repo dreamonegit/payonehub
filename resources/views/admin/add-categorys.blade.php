@@ -110,6 +110,12 @@
             },
             meta_title: {
                 required: true
+            },
+            meta_keyword: {
+                required: true
+            },
+            meta_description: {
+                required: true
             }
         },
         messages:{
@@ -121,7 +127,13 @@
                 required:"Description is required"
             },
             meta_title:{
-                required:"Title is required"
+                required:"Meta Title is required"
+            },
+            meta_keyword:{
+                required:"Meta Keyword is required"
+            },
+            meta_description:{
+                required:"Meta Description is required"
             }
 
         }

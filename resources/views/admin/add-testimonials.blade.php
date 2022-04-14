@@ -83,3 +83,28 @@
 
             <!-- Footer -->
 		@include('layouts.admin.footer')
+ <script>
+     $('#testimonials').validate({ // initialize the plugin
+        ignore: ".ignore",
+        rules: {
+            name: {
+                required: true
+            },
+            description: {
+                required: true
+            }
+
+        },
+        messages:{
+ 
+            name:{
+                required:"Name is required"
+            },
+            description:{
+                required:"Description is required"
+            }
+
+
+        }
+    });
+ </script>

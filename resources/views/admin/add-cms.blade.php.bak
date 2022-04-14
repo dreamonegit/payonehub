@@ -29,7 +29,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0">Add CMS</h5>
                     </div>
-				 <form class="form-horizontal" method="post" id="cms" enctype="multipart/form-data" action="{{ Url('save-cms') }}">{{ csrf_field() }}
+				 <form class="form-horizontal" method="post" id="cms" enctype="multipart/form-data" action="{{ Url('admin/save-cms') }}">{{ csrf_field() }}
 					@if(isset($cms))
 					<input type="hidden" name="id" value="{{$cms->id}}">
 					@else
@@ -106,10 +106,10 @@
 @include('layouts.admin.footer')
 
  <script>
-     $('#categorys').validate({ // initialize the plugin
+     $('#cms').validate({ // initialize the plugin
         ignore: ".ignore",
         rules: {
-            catname: {
+            title: {
                 required: true
             },
             description: {
@@ -121,14 +121,14 @@
         },
         messages:{
  
-            catname:{
-                required:"Name is required"
+            title:{
+                required:"Title is required"
             },
             description:{
                 required:"Description is required"
             },
             meta_title:{
-                required:"Title is required"
+                required:"Meta Title is required"
             }
 
         }
