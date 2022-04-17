@@ -40,7 +40,7 @@
               <div class="tab-pane fade show active" id="firstTab" role="tabpanel" aria-labelledby="first-tab">
                 <div class="row">
 					@if (\Session::has('message'))
-						<div class="alert alert-danger">
+						<div class="alert alert-success">
 							<ul>
 								<li>{!! \Session::get('message') !!}</li>
 							</ul>
@@ -76,6 +76,10 @@
                         <input id="birthDate" value="{{ auth::user()->dob }}" name="dob" type="text" class="form-control" required placeholder="Date of Birth">
                       </div>
                       <div class="form-group">
+                        <label for="birthDate">Dream ID</label>
+                        <input id="birthDate" value="{{ auth::user()->dream_id }}" name="dream_id" type="text" class="form-control" required placeholder="Dream id">
+                      </div>
+                      <div class="form-group">
                         <label for="inputCountry">Country</label>
                         <select class="custom-select" id="inputCountry" name="country_id">
                           <option value=""> --- Please Select --- </option>
@@ -103,7 +107,7 @@
 					@if(count($errors)>0)
 						<ul>
 							@foreach($errors->all() as $error)
-							<li class="alert alert-danger">{{$error}}</li>
+							<li class="alert alert-success">{{$error}}</li>
 							@endforeach
 						</ul>
 					@endif

@@ -76,6 +76,10 @@
                         <input id="birthDate" value="{{ auth::user()->dob }}" name="dob" type="text" class="form-control" required placeholder="Date of Birth">
                       </div>
                       <div class="form-group">
+                        <label for="birthDate">Dream ID</label>
+                        <input id="birthDate" value="{{ auth::user()->dream_id }}" name="dream_id" type="text" class="form-control" required placeholder="Dream id">
+                      </div>
+                      <div class="form-group">
                         <label for="inputCountry">Country</label>
                         <select class="custom-select" id="inputCountry" name="country_id">
                           <option value=""> --- Please Select --- </option>
@@ -103,7 +107,7 @@
 					@if(count($errors)>0)
 						<ul>
 							@foreach($errors->all() as $error)
-							<li class="alert alert-danger">{{$error}}</li>
+							<li class="alert alert-success">{{$error}}</li>
 							@endforeach
 						</ul>
 					@endif
@@ -342,12 +346,12 @@
 					   <hr>
 					   @if($aadhar)
 						<p class="mb-2">Aadhar Documents</p>
-					    <p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharfront) }}">Aadhar Front</a>.</p>
-						<p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharback) }}">Aadhar Back</a>.</p>
+					    <p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharfront) }}" target="_blank">Aadhar Front</a>.</p>
+						<p class="text-1 mb-0"><a href="{{ asset('storage/aadhar/'.$aadhar->aadharback) }}" target="_blank">Aadhar Back</a>.</p>
 
 						<p class="mb-2">Pan Documents</p>
-					    <p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panfront) }}">Pan Front</a>.</p>
-						<p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panback) }}">Pan Back</a>.</p>
+					    <p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panfront) }}" target="_blank">Pan Front</a>.</p>
+						<p class="text-1 mb-0"><a href="{{ asset('storage/pan/'.$aadhar->panback) }}" target="_blank">Pan Back</a>.</p>
 						@endif
 					</div>
                   </div>
