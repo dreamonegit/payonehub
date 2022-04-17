@@ -103,8 +103,6 @@
             description:{
                 required:"Description is required"
             }
-
-
         }
     });
  </script>

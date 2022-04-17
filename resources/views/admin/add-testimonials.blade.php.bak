@@ -84,7 +84,7 @@
             <!-- Footer -->
 		@include('layouts.admin.footer')
  <script>
-     $('#categorys').validate({ // initialize the plugin
+     $('#testimonials').validate({ // initialize the plugin
         ignore: ".ignore",
         rules: {
             name: {
