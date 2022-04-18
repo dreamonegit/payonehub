@@ -10,7 +10,8 @@ use App\User;
 use App\Countries;
 use App\Kycinformations;
 use DB;
-
+use Session;
+use Redirect;
 class UserController extends Controller
 {
     public function __construct()
@@ -99,6 +100,15 @@ class UserController extends Controller
 		$user->address = $request->input('address');
 		$user->bank_account = $request->input('bank_account');
 		$user->dream_id = $request->input('dream_id');
+	$image = $profile_images = '';   
+	   if ($request->file('profile_image')) {
+		$image = $request->file('profile_image');
+		$profile_images = 'Profile_image' . time() . '_' . $image->getClientOriginalName();
+		$image_resize = Image::make($image->getRealPath());              
+		$image_resize->save(storage_path('app/public/profileimage/' .$profile_images));
+		 $user->profile_image = $profile_images;
+		//echo $profile_images; exit;
+	}
 		$user->save();
 		return redirect()->back()->with('message', 'Successfully profile is update...');  		
 	}
@@ -173,7 +183,7 @@ class UserController extends Controller
 	public function logout(){
 		Auth::logout();
 		Session::flush();
-		return Redirect::to('/admin');		
+		return Redirect::to('/');		
 	}
 
 }

@@ -75,15 +75,13 @@
                         <label for="birthDate">Date of Birth</label>
                         <input id="birthDate" value="{{ auth::user()->dob }}" name="dob" type="text" class="form-control" required placeholder="Date of Birth">
                       </div>
-                        <div class="form-group">
-                          <label class="form-label" for="basic-icon-default-fullname">Upload Image</label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-image"></i></span>
-                            <input type="file"  name="profile_image" class="form-control" id="basic-icon-default-fullname" placeholder=""aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"/>
-                          </div>
-                        </div>
                       <div class="form-group">
-                        <label for="birthDate">Dreamone ID</label>
+                        <label for="image">Upload Image</label>
+                        <input id="birthDate" value="{{ auth::user()->profile_image }}" name="profile_image" type="file" class="form-control" required placeholder="">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="dreamone">Dreamone ID</label>
                         <input id="birthDate" value="{{ auth::user()->dream_id }}" name="dream_id" type="text" class="form-control" required placeholder="Dream id">
                       </div>
                       <div class="form-group">
@@ -96,19 +94,19 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="birthDate">State</label>
+                        <label for="state">State</label>
                         <input id="birthDate" value="{{ auth::user()->state }}" name="state" type="text" class="form-control" required placeholder="State">
                       </div>
                       <div class="form-group">
-                        <label for="birthDate">City</label>
+                        <label for="city">City</label>
                         <input id="birthDate" value="{{ auth::user()->city }}" name="city" type="text" class="form-control" required placeholder="city">
                       </div>
                       <div class="form-group">
-                        <label for="birthDate">Address</label>
+                        <label for="address">Address</label>
                         <input id="birthDate" value="{{ auth::user()->address }}" name="address" type="text" class="form-control" required placeholder="Address">
                       </div>
 	                  <div class="form-group">
-                        <label for="birthDate">Bank Account</label>
+                        <label for="bank">Bank Account</label>
                         <input id="birthDate" value="{{ auth::user()->bank_account }}" name="bank_account" type="text" class="form-control" required placeholder="Bank Account">
                       </div>
                       <button class="btn btn-primary" type="submit">Update Now</button>

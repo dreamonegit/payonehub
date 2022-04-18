@@ -50,7 +50,7 @@
             </li>
             <li class="menu-item @if(Request::segment(2) == 'coupon') {{ 'active' }} @endif">
               <a href="{{ url('/admin/coupon') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-dollar"></i>
+                <i class="menu-icon tf-icons bx bxs-coupon"></i>
                 <div data-i18n="Account">Coupon code</div>
               </a>
             </li>

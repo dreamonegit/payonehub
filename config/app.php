@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 		Intervention\Image\ImageServiceProvider::class,
 		Gabievi\Promocodes\PromocodesServiceProvider::class,
+		Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 		'Image' => Intervention\Image\Facades\Image::class,
 		'Promocodes' => Gabievi\Promocodes\Facades\Promocodes::class,
+		'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 
