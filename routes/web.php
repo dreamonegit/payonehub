@@ -24,15 +24,15 @@ Route::middleware(['user'])->group(function () {
 	Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
 	Route::get('/logout', 'UserController@logout');	
 });
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
-	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');
-	Route::get('/clientlist', 'ClientController@clientlist')->name('admin')->middleware('admin');
-	Route::match(['get', 'post'], '/addclient','ClientController@addclient')->name('addclient')->middleware('admin');
-	Route::get('/editclient/{id}', 'ClientController@editclient')->name('admin')->middleware('admin');
-	Route::get('/deleteclient/{id}', 'ClientController@deleteclient')->name('admin')->middleware('admin');
-	Route::get('/user', 'UserController@index')->name('admin')->middleware('admin');
-	Route::get('/coupon', 'CouponController@index')->name('admin')->middleware('admin');
-	Route::match(['get', 'post'], '/addcoupon','CouponController@addcoupon')->name('addcoupon')->middleware('admin');
+Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(){
+	Route::get('/', 'AdminController@index');
+	Route::get('/clientlist', 'ClientController@clientlist');
+	Route::match(['get', 'post'], '/addclient','ClientController@addclient');
+	Route::get('/editclient/{id}', 'ClientController@editclient');
+	Route::get('/deleteclient/{id}', 'ClientController@deleteclient');
+	Route::get('/user', 'UserController@index');
+	Route::get('/coupon', 'CouponController@index');
+	Route::match(['get', 'post'], '/addcoupon','CouponController@addcoupon');
 	
 	Route::get('/list-testimonials', 'PageController@listtestimonials');
 	Route::get('/add-testimonials', 'PageController@addtestimonials');

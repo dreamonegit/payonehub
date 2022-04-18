@@ -28,7 +28,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 	public function index(){
-	
+	//echo "33"; exit;
 		$this->data['title'] = 'Home';
 		return view('admin.index', $this->data);
 	}

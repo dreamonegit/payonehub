@@ -24,7 +24,7 @@ Route::middleware(['user'])->group(function () {
 	Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
 	Route::get('/logout', 'UserController@logout');	
 });
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(){
 	Route::get('/', 'AdminController@index')->name('admin')->middleware('admin');
 	Route::get('/clientlist', 'ClientController@clientlist')->name('admin')->middleware('admin');
 	Route::match(['get', 'post'], '/addclient','ClientController@addclient')->name('addclient')->middleware('admin');
@@ -88,11 +88,11 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
 	Route::post('/save-kycinformations', 'PageController@savekycinformations');
 	Route::get('/delete-kycinformations/{id}', 'PageController@deletekycinformations');
 	Route::get('/logout', 'HomeController@logout');	
-	Route::get('/home', 'HomeController@index');
+	Route::get('/home', 'HomeController@index')->middleware('admin');
 	Route::get('/myprofile', 'AdminController@myprofile');
 	Route::post('/updateprofile', 'AdminController@updateprofile');
 	Route::get('/resetpassword', 'AdminController@resetpassword');
 	Route::post('/updatepassword', 'AdminController@updatepassword');
-	Route::get('/logout', 'AdminController@logout');	
+	
 	
 });

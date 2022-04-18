@@ -169,7 +169,7 @@ class UserController extends Controller
 	public function logout(){
 		Auth::logout();
 		Session::flush();
-		return Redirect::to('/admin');		
+		return Redirect::to('/');		
 	}
 
 }
