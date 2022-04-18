@@ -76,7 +76,7 @@
                         <input id="birthDate" value="{{ auth::user()->dob }}" name="dob" type="text" class="form-control" required placeholder="Date of Birth">
                       </div>
                       <div class="form-group">
-                        <label for="birthDate">Dream ID</label>
+                        <label for="birthDate">Dreamone ID</label>
                         <input id="birthDate" value="{{ auth::user()->dream_id }}" name="dream_id" type="text" class="form-control" required placeholder="Dream id">
                       </div>
                       <div class="form-group">
@@ -87,6 +87,22 @@
 								<option value="{{ $countryval->nicename }}" @if($countryval->nicename==auth::user()->country) {{ "selected" }} @endif>{{ $countryval->nicename }} </option>
 							@endforeach
                         </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="birthDate">State</label>
+                        <input id="birthDate" value="{{ auth::user()->state }}" name="state" type="text" class="form-control" required placeholder="State">
+                      </div>
+                      <div class="form-group">
+                        <label for="birthDate">City</label>
+                        <input id="birthDate" value="{{ auth::user()->city }}" name="city" type="text" class="form-control" required placeholder="city">
+                      </div>
+                      <div class="form-group">
+                        <label for="birthDate">Address</label>
+                        <input id="birthDate" value="{{ auth::user()->address }}" name="address" type="text" class="form-control" required placeholder="Address">
+                      </div>
+	                  <div class="form-group">
+                        <label for="birthDate">Bank Account</label>
+                        <input id="birthDate" value="{{ auth::user()->bank_account }}" name="bank_account" type="text" class="form-control" required placeholder="Bank Account">
                       </div>
                       <button class="btn btn-primary" type="submit">Update Now</button>
                     </form>
@@ -300,7 +316,7 @@
    
                 <div class="row">
 					@if (\Session::has('message'))
-						<div class="alert alert-danger">
+						<div class="alert alert-success">
 							<ul>
 								<li>{!! \Session::get('message') !!}</li>
 							</ul>

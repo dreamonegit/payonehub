@@ -94,6 +94,10 @@ class UserController extends Controller
 		$user->dob = $request->input('dob'); 
 		$user->gender = $request->input('gender');
 		$user->country = $request->input('country_id');
+		$user->state = $request->input('state');
+		$user->city = $request->input('city');
+		$user->address = $request->input('address');
+		$user->bank_account = $request->input('bank_account');
 		$user->dream_id = $request->input('dream_id');
 		$user->save();
 		return redirect()->back()->with('message', 'Successfully profile is update...');  		
