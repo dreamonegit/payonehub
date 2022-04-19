@@ -232,6 +232,7 @@ return [
 		'Image' => Intervention\Image\Facades\Image::class,
 		'Promocodes' => Gabievi\Promocodes\Facades\Promocodes::class,
 		'Image' => Intervention\Image\Facades\Image::class,
+		'Helper' => App\Helpers\Helper::class,
 
     ],
 

@@ -16,6 +16,7 @@ Route::get('/', 'IndexController@index')->name('/');
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
 Route::get('/contactus', 'IndexController@contactus');
+Route::post('/forgotpassword', 'UserController@forgotpassword')->name('forgotpassword');
 Auth::routes();
 Route::middleware(['user'])->group(function () {
 	Route::get('/profile', 'IndexController@profile')->name('profile');
