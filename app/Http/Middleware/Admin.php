@@ -19,7 +19,6 @@ class Admin
             return redirect()->route('admin');
         }
         if (Auth::user()->role != 1) {
-			//echo "ee"; exit;
 			Auth::logout();
 			return redirect(route('login'))->withErrors(['email' => 'These credentials do not match our records.']);
         }
