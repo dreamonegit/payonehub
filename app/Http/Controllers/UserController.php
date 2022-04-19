@@ -142,17 +142,23 @@ class UserController extends Controller
 				), 400);				
 			}else{
 				$newpassword = Helper::generatePassword(8);
-				$data = array('name'=>"Virat Gandhi");
-				Mail::send('mail.forgot', $data, function($message) {
-					$message->to('kcelaxman@gmail.com', 'Tutorials Point')->subject
-					('Laravel Testing Mail with Attachment');
-					$message->from('xyz@gmail.com','Virat Gandhi');
+				$data = array('mail'=>$request->input('email'));
+				$mail = Mail::send('mail.forgot', $data, function($message) {
+					$message->to($data['email'], '')->subject
+					('Forgot password');
+					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
-				  
-				return Response::json(array(
-					'success' => false,
-					'errors' => array('Password send sucessfully in your mailbox pls check.....')
-				), 200);	
+				if($mail){
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Something went wrong pls try again....')
+					), 400);					
+				}else{
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Password send sucessfully in your mailbox pls check.....')
+					), 200);
+				}				
 			}				
 	}
 	public function updatekyc(Request $request){
