@@ -132,6 +132,9 @@
             meta_description:{
                 required:"Meta Description is required"
             },
+            meta_title:{
+                required:"Meta title is required"
+            },
             meta_keyword:{
                 required:"Meta keyword is required"
             }

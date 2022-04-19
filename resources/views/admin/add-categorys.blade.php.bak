@@ -72,6 +72,13 @@
                           </div>
                         </div>
                       <div class="mb-3">
+                          <label class="form-label" for="basic-icon-default-message">Description</label>
+                          <div class="input-group input-group-merge">
+                            <span id="basic-icon-default-message2" class="input-group-text"><i class="bx bx-comment"></i></span>
+                            <textarea name="meta_description" id="meta_description" class="form-control" placeholder="Enter the Message" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">@if(isset($categorys)) {{ $categorys->meta_description }} @endif</textarea>
+                          </div>
+                        </div>
+                      <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                         <select class="form-select" name="status" id="status" aria-label="Default select example">
                           <option selected>---choose the status---</option>
@@ -127,13 +134,13 @@
                 required:"Description is required"
             },
             meta_title:{
-                required:"Title is required"
+                required:"Meta Title is required"
             },
             meta_keyword:{
-                required:"Keyword is required"
+                required:"Meta Keyword is required"
             },
             meta_description:{
-                required:"Description is required"
+                required:"Meta Description is required"
             }
 
         }
