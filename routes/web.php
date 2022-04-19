@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'IndexController@index');	
+Route::get('/', 'IndexController@index')->name('/');	
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
 Route::get('/contactus', 'IndexController@contactus');

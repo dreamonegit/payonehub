@@ -10,7 +10,7 @@ use App\User;
 use App\Countries;
 use App\Kycinformations;
 use DB;
-
+use Session;
 class UserController extends Controller
 {
     public function __construct()
@@ -169,7 +169,7 @@ class UserController extends Controller
 	public function logout(){
 		Auth::logout();
 		Session::flush();
-		return Redirect::to('/admin');		
+		return Redirect::to('/');		
 	}
 
 }
