@@ -48,7 +48,7 @@
 					@endif
                   <div class="col-lg-8">
                     <h4 class="mb-4">Personal Information</h4>
-                    <form id="personalInformation" method="post" action="{{ url('/updateprofile') }}">@csrf
+                    <form id="personalInformation" method="post" enctype="multipart/form-data" action="{{ url('/updateprofile') }}">@csrf
                       <div class="mb-3">
                         <div class="custom-control custom-radio custom-control-inline">
                           <input id="male" name="gender" class="custom-control-input" value="male" @if(auth::user()->gender=='male') checked @endif required type="radio">
@@ -76,7 +76,12 @@
                         <input id="birthDate" value="{{ auth::user()->dob }}" name="dob" type="text" class="form-control" required placeholder="Date of Birth">
                       </div>
                       <div class="form-group">
-                        <label for="birthDate">Dream ID</label>
+                        <label for="image">Upload Image</label>
+                        <input id="birthDate" value="{{ auth::user()->profile_image }}" name="profile_image" type="file" class="form-control" required placeholder="">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="dreamone">Dreamone ID</label>
                         <input id="birthDate" value="{{ auth::user()->dream_id }}" name="dream_id" type="text" class="form-control" required placeholder="Dream id">
                       </div>
                       <div class="form-group">
@@ -87,6 +92,22 @@
 								<option value="{{ $countryval->nicename }}" @if($countryval->nicename==auth::user()->country) {{ "selected" }} @endif>{{ $countryval->nicename }} </option>
 							@endforeach
                         </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="state">State</label>
+                        <input id="birthDate" value="{{ auth::user()->state }}" name="state" type="text" class="form-control" required placeholder="State">
+                      </div>
+                      <div class="form-group">
+                        <label for="city">City</label>
+                        <input id="birthDate" value="{{ auth::user()->city }}" name="city" type="text" class="form-control" required placeholder="city">
+                      </div>
+                      <div class="form-group">
+                        <label for="address">Address</label>
+                        <input id="birthDate" value="{{ auth::user()->address }}" name="address" type="text" class="form-control" required placeholder="Address">
+                      </div>
+	                  <div class="form-group">
+                        <label for="bank">Bank Account</label>
+                        <input id="birthDate" value="{{ auth::user()->bank_account }}" name="bank_account" type="text" class="form-control" required placeholder="Bank Account">
                       </div>
                       <button class="btn btn-primary" type="submit">Update Now</button>
                     </form>
@@ -300,7 +321,7 @@
    
                 <div class="row">
 					@if (\Session::has('message'))
-						<div class="alert alert-danger">
+						<div class="alert alert-success">
 							<ul>
 								<li>{!! \Session::get('message') !!}</li>
 							</ul>
