@@ -171,19 +171,6 @@
           <li class="nav-item"> <a id="signup-tab" class="nav-link text-4" data-toggle="tab" href="#signup" role="tab" aria-controls="signup" aria-selected="false">Sign Up</a> </li>
         </ul>
         <div class="tab-content pt-4">
-          <div class="tab-pane fade" id="forgot" role="tabpanel" aria-labelledby="forgot-tab">
-		  <span class="throw_log_error"></span>
-		  <span class="throw_log_success"></span>
-            <form id="loginForm" method="post">
-              <div class="form-group">
-                <input type="text" class="form-control" id="loginusername" name="username" required placeholder="Mobile or Email ID">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="logpassword" id="loginPassword" required placeholder="Password">
-              </div>
-              <button class="btn btn-primary btn-block" type="submit">Send</button>
-            </form>
-          </div>
           <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
 		  <span class="throw_log_error"></span>
 		  <span class="throw_log_success"></span>

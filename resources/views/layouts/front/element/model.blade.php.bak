@@ -225,11 +225,11 @@
               <button class="btn btn-primary btn-block" type="submit">Signup</button>
             </form>
           </div>
-          <div class="d-flex align-items-center my-4">
+         <!-- <div class="d-flex align-items-center my-4">
             <hr class="flex-grow-1">
             <span class="mx-2">OR</span>
             <hr class="flex-grow-1">
-          </div>
+          </div>--> 
        <!--   <div class="row">
             <div class="col-12 mb-3">
               <button type="button" class="btn btn-block btn-outline-primary">Login with Facebook</button>
@@ -258,7 +258,9 @@
             <form id="forgotForm" method="post">
               <div class="form-group">
                 <input type="text" class="form-control" id="forgotmail" name="forgotmail" required placeholder="Email ID">
-              </div>
+			  </div>
+			  <span class="throw_error"></span>
+			  <span class="throw_success"></span>
               <button class="btn btn-primary btn-block" type="submit">Send Password to Mail</button>
             </form>
           </div>
