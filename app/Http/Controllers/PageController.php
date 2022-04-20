@@ -358,4 +358,34 @@ class PageController extends Controller
 		$kycinformations = $this->kycinformations->where('id',$id)->delete();
 		return redirect('/admin/list-contactus');
 	}
+	public function listuser(){
+		$this->data['user'] = User::where('role',0)->get();
+		return view('admin.list-user',$this->data);
+	}
+    public function saveuser(Request $request)
+    {
+        if ($request->input("id") != 0) {
+           $user = User::where("id", $request->input("id"))->first();
+        } else {
+            $user = new User();
+        }
+		$user->dream_id = $request->input('dream_id');
+		$user->name = $request->input('name');
+		$user->email = $request->input('email');
+		$user->mobile = $request->input('mobile');
+	    $user->bank_account = $request->input('bank_account');
+        $user->amount = $request->input('amount');
+        $user->save();
+       return redirect('/admin/list-user')->with('message','List User successfully Save...');
+    }
+     public function edituser($id)
+    {
+        $this->data["users"] = $this->user->where("id", $id)->first();
+        return view('admin.edit-user',$this->data);
+    }
+   
+	public function deleteuser($id){
+		$user = $this->user->where('id',$id)->delete();
+		return redirect('/admin/list-user');
+	}
 }

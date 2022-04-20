@@ -93,6 +93,7 @@ class UserController extends Controller
 		$user = User::where('id',auth::user()->id)->first();
 		$user->name = $request->input('name'); 
 		$user->dob = $request->input('dob'); 
+		$user->mobile = $request->input('mobile'); 
 		$user->gender = $request->input('gender');
 		$user->country = $request->input('country_id');
 		$user->state = $request->input('state');
@@ -171,7 +172,7 @@ class UserController extends Controller
 		$kycinformations->panfront = $panimagesfront;
 		$kycinformations->panback = $panimagespanback;
 		$kycinformations->save();	
-		return redirect()->back()->with('message', 'Successfully profile is update...');  		
+		return redirect()->back()->with('message', 'Successfully Kycinformation is update...');  		
 	}
 	public function logout(){
 		Auth::logout();

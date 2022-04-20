@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'IndexController@index');	
+Route::get('/', 'IndexController@index')->name('/');	
 Route::match(['get', 'post'], '/signup','UserController@signup')->name('signup');
 Route::match(['get', 'post'], '/signin','UserController@signin')->name('signin');
 Route::get('/contactus', 'IndexController@contactus');
@@ -84,15 +84,21 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(
 	Route::post('/save-contactus', 'PageController@savecontactus');
 	Route::get('/delete-contactus/{id}', 'PageController@deletecontactus');	
 	
-	Route::get('/list-kycinformations', 'PageController@listkycinformations');
-	Route::post('/save-kycinformations', 'PageController@savekycinformations');
-	Route::get('/delete-kycinformations/{id}', 'PageController@deletekycinformations');
 	Route::get('/logout', 'HomeController@logout');	
 	Route::get('/home', 'HomeController@index');
 	Route::get('/myprofile', 'AdminController@myprofile');
 	Route::post('/updateprofile', 'AdminController@updateprofile');
 	Route::get('/resetpassword', 'AdminController@resetpassword');
 	Route::post('/updatepassword', 'AdminController@updatepassword');
+	
+	Route::get('/list-user', 'AdminController@listuser');
+    Route::post('/save-user', 'AdminController@saveuser');
+	Route::get('/edit-user/{id}', 'AdminController@edituser');
+	Route::get('/delete-user/{id}', 'AdminController@deleteuser');
+	
+	Route::get('/list-kycinformations', 'AdminController@listkycinformations');
+	Route::post('/save-kycinformations', 'AdminController@savekycinformations');
+	Route::get('/delete-kycinformations/{id}', 'AdminController@deletekycinformations');
 	
 	
 });

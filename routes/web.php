@@ -94,5 +94,10 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(
 	Route::get('/resetpassword', 'AdminController@resetpassword');
 	Route::post('/updatepassword', 'AdminController@updatepassword');
 	
+	Route::get('/list-user', 'PageController@listuser');
+    Route::post('/save-user', 'PageController@saveuser');
+	Route::get('/edit-user/{id}', 'PageController@edituser');
+	Route::get('/delete-user/{id}', 'PageController@deleteuser');
+	
 	
 });

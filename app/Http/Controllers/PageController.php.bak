@@ -329,33 +329,6 @@ class PageController extends Controller
 		$contactus = $this->contactus->where('id',$id)->delete();
 		return redirect('/admin/list-contactus');
 	}
-	public function listkycinformations()
-    {
-        $this->data['kycinformations'] = $this->kycinformations->get();
-        return view('admin.list-kycinformations)',$this->data);
-    }
-    public function savekycinformations(Request $request)
-    {
-        if ($request->input("id") != 0) {
-            $kycinformations = Kycinformations::where('id', $request->input('id'))->first();
-        } else {
-            $kycinformations = new Kycinformations();
-        }
-		
-        $kycinformations->aadharfront = $request->input('aadharfront');
-        $kycinformations->aadharback = $request->input('aadharback');
-		$kycinformations->aadharnumber = $request->input('aadharnumber');
-		$kycinformations->panfront = $request->input('panfront');
-		$kycinformations->panback = $request->input('panback');
-		$kycinformations->pannumber = $request->input('pannumber');
-        if ($kycinformations->save()) {
-            return redirect('/list-kycinformations')->withErrors(['sucessfully updated',]);
-        } else {
-            return redirect('/list-kycinformations')->withErrors(['Failed']);
-        }
-    }
-	public function deletekycinformations($id){
-		$kycinformations = $this->kycinformations->where('id',$id)->delete();
-		return redirect('/admin/list-contactus');
-	}
+
+
 }

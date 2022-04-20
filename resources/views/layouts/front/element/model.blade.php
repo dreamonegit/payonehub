@@ -212,19 +212,19 @@
               <button class="btn btn-primary btn-block" type="submit">Signup</button>
             </form>
           </div>
-          <div class="d-flex align-items-center my-4">
+         <!-- <div class="d-flex align-items-center my-4">
             <hr class="flex-grow-1">
             <span class="mx-2">OR</span>
             <hr class="flex-grow-1">
-          </div>
-          <div class="row">
+          </div>--> 
+       <!--   <div class="row">
             <div class="col-12 mb-3">
               <button type="button" class="btn btn-block btn-outline-primary">Login with Facebook</button>
             </div>
             <div class="col-12">
               <button type="button" class="btn btn-block btn-outline-danger">Login with Google</button>
             </div>
-          </div>
+          </div> --> 
         </div>
       </div>
     </div>

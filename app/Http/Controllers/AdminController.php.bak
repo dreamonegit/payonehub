@@ -6,6 +6,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Storage;
 use Auth, Validator;
 use App\User;
+use App\Kycinformations;
 use DB;
 
 class AdminController extends Controller
@@ -13,6 +14,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->user = new User();
+		$this->kycinformations = new Kycinformations();
     }    
 	public function index(){
 	
@@ -64,9 +66,64 @@ class AdminController extends Controller
 		
 		return redirect()->back()->with('message', 'Successfully password is updated...');  		
 	}
-	public function logout(){
-		Auth::logout();
+	public function listkycinformations()
+    {
+        $this->data['kycinformations'] = $this->kycinformations->get();
+        return view('admin.list-kycinformations',$this->data);
+    }
+    public function savekycinformations(Request $request)
+    {
+        if ($request->input("id") != 0) {
+            $kycinformations = Kycinformations::where('id', $request->input('id'))->first();
+        } else {
+            $kycinformations = new Kycinformations();
+        }
 		
-		return Redirect::to('');		
+        $kycinformations->aadharfront = $request->input('aadharfront');
+        $kycinformations->aadharback = $request->input('aadharback');
+		$kycinformations->aadharnumber = $request->input('aadharnumber');
+		$kycinformations->panfront = $request->input('panfront');
+		$kycinformations->panback = $request->input('panback');
+		$kycinformations->pannumber = $request->input('pannumber');
+        if ($kycinformations->save()) {
+            return redirect('/list-kycinformations')->withErrors(['sucessfully updated',]);
+        } else {
+            return redirect('/list-kycinformations')->withErrors(['Failed']);
+        }
+    }
+	public function deletekycinformations($id){
+		$kycinformations = $this->kycinformations->where('id',$id)->delete();
+		return redirect('/admin/list-contactus');
 	}
+	public function listuser(){
+		$this->data['user'] = User::where('role',0)->get();
+		return view('admin.list-user',$this->data);
+	}
+    public function saveuser(Request $request)
+    {
+        if ($request->input("id") != 0) {
+           $user = User::where("id", $request->input("id"))->first();
+        } else {
+            $user = new User();
+        }
+		$user->dream_id = $request->input('dream_id');
+		$user->name = $request->input('name');
+		$user->email = $request->input('email');
+		$user->mobile = $request->input('mobile');
+	    $user->bank_account = $request->input('bank_account');
+        $user->amount = $request->input('amount');
+        $user->save();
+       return redirect('/admin/list-user')->with('message','List User successfully Save...');
+    }
+     public function edituser($id)
+    {
+        $this->data["users"] = $this->user->where("id", $id)->first();
+        return view('admin.edit-user',$this->data);
+    }
+   
+	public function deleteuser($id){
+		$user = $this->user->where('id',$id)->delete();
+		return redirect('/admin/list-user');
+	}
+
 }

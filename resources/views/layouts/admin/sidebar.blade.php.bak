@@ -35,6 +35,12 @@
 				<div data-i18n="Connections">Subategorys</div>
 			  </a>
 			</li>
+				 <li class="menu-item">
+                  <a href="{{ url('/admin/list-user') }}" class="menu-link">
+				  <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="Connections">List User</div>
+                  </a>
+                </li>
             <!-- Layouts -->
             <li class="menu-item @if(Request::segment(2) == 'clientlist') {{ 'active' }} @endif">
               <a href="{{ url('/admin/clientlist') }}" class="menu-link">
@@ -50,7 +56,7 @@
             </li>
             <li class="menu-item @if(Request::segment(2) == 'coupon') {{ 'active' }} @endif">
               <a href="{{ url('/admin/coupon') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-coupon"></i>
+                <i class="menu-icon tf-icons bx bx-purchase-tag-alt"></i>
                 <div data-i18n="Account">Coupon code</div>
               </a>
             </li>
@@ -84,6 +90,7 @@
                     <div data-i18n="Connections">FAQ</div>
                   </a>
                 </li>
+
                 <li class="menu-item">
                   <a href="{{ url('/admin/list-contactus') }}" class="menu-link">
 				  <i class="menu-icon tf-icons bx bx-phone"></i>
@@ -96,7 +103,6 @@
                     <div data-i18n="Connections">KYC</div>
                   </a>
                 </li>
-
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
