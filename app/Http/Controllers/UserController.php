@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
+use Mail;
 use Storage;
 use Auth, Validator, Response;
 use App\User;
@@ -12,6 +13,7 @@ use App\Kycinformations;
 use DB;
 use Session;
 use Redirect;
+use Helper;
 class UserController extends Controller
 {
     public function __construct()
@@ -131,6 +133,34 @@ class UserController extends Controller
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
 		
 		return redirect()->back()->with('message', 'Successfully password is updated...');  		
+	}
+	public function forgotpassword(Request $request){
+			$msg = User::emailexistornot($request->input('email'));
+			if($msg==0){
+				return Response::json(array(
+					'success' => false,
+					'errors' => array('This email id does not have in our database record....')
+				), 400);				
+			}else{
+				$newpassword = Helper::generatePassword(8);
+				$data = array('mail'=>$request->input('email'));
+				$mail = Mail::send('mail.forgot', $data, function($message) {
+					$message->to($data['email'], '')->subject
+					('Forgot password');
+					$message->from(env('MAIL_FROM_ADDRESS'),'');
+				});
+				if($mail){
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Something went wrong pls try again....')
+					), 400);					
+				}else{
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Password send sucessfully in your mailbox pls check.....')
+					), 200);
+				}				
+			}				
 	}
 	public function updatekyc(Request $request){
 		$image = $aadharimagesfront = $aadharimagesback = $panimagesfront = $panimagespanback ='';

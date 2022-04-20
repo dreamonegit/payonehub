@@ -79,7 +79,40 @@ $(document).ready(function() {
         });
         event.preventDefault(); //Prevent the default submit
     });
+	 $('#forgotForm').submit(function(event) { //Trigger on form submit
+			$('.throw_error').empty(); //Clear the messages first
+			$('.throw_success').empty();
+			var postForm = { //Fetch form data
+				"_token"	: "{{ csrf_token() }}",
+				'email'		: $('input[name=forgotmail]').val()
+			};
+			$.ajax({ //Process the form using $.ajax()
+				type      : 'POST', //Method type
+				url       : '{{ url("/forgotpassword") }}', //Your form processing file URL
+				data      : postForm, //Forms name
+				dataType  : 'json',
+				success   : function(data) {
+					$('.throw_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
+					setTimeout(function() {
+						//location.reload();
+					}, 3000);
+				},
+				error:function (response){
+					$.each(response.responseJSON.errors,function(field_name,error){
+						$('.throw_error').fadeIn(1000).append('<p>' +error+ '</p>');
+					});
+				},
+			});
+			event.preventDefault(); //Prevent the default submit
+	 });
 });
-
-
+$(document).on('click','#forgot',function(){
+	$('.close').trigger('click');
+	$('#login-forgot').addClass('show').fadeIn(500);
+	$('#forgot-content').addClass('show').addClass('active');
+});
+$(document).on('click','.close',function(){
+	$('#login-forgot').removeClass('show').css('display','none').fadeOut(500);
+	$('#forgot-content').removeClass('show').removeClass('active');
+});
 </script>

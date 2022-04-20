@@ -22,6 +22,7 @@ Route::middleware(['user'])->group(function () {
 	Route::post('/updateprofile', 'UserController@updateprofile')->name('updateprofile');
 	Route::post('/update-kyc', 'UserController@updatekyc')->name('updatekyc');
 	Route::post('/updatepassword', 'UserController@updatepassword')->name('updatepassword');
+	Route::post('/forgotpassword', 'UserController@forgotpassword')->name('forgotpassword');
 	Route::get('/logout', 'UserController@logout');	
 });
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin']], function(){
