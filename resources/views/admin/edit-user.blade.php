@@ -64,13 +64,6 @@
                             <input type="text" name="mobile" class="form-control" id="basic-icon-default-fullname" placeholder="Enter the mobile"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"value="@if(isset($users->mobile)) {{ $users->mobile }} @endif"/>
                           </div>
                         </div>
-                     <div class="mb-3">
-                          <label class="form-label" for="basic-icon-default-fullname">Bank Account</label>
-                          <div class="input-group input-group-merge">
-                            <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-"></i></span>
-                            <input type="text" name="bank_account" class="form-control" id="basic-icon-default-fullname" placeholder="Enter the AccountNo"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"value="@if(isset($users->bank_account)) {{ $users->bank_account }} @endif"/>
-                          </div>
-                        </div>
                         <div class="mb-3">
                           <label class="form-label" for="basic-icon-default-fullname">INR</label>
                           <div class="input-group input-group-merge">
