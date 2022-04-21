@@ -375,6 +375,7 @@ class PageController extends Controller
 		$user->mobile = $request->input('mobile');
 	    $user->bank_account = $request->input('bank_account');
         $user->amount = $request->input('amount');
+		$user->status = $request->input('status');
         $user->save();
        return redirect('/admin/list-user')->with('message','List User successfully Save...');
     }

@@ -33,6 +33,7 @@
               <li class="nav-item"> <a class="nav-link" id="third-tab" data-toggle="tab" href="#thirdTab" role="tab" aria-controls="thirdTab" aria-selected="false">Favourites</a> </li>
               <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourthTab" role="tab" aria-controls="fourthTab" aria-selected="false">Cards</a> </li>
               <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fivthTab" role="tab" aria-controls="fivthTab" aria-selected="false">KYC</a> </li>
+			   <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#sixthTab" role="tab" aria-controls="fivthTab" aria-selected="false">Wallet Balance</a> </li>
             </ul>
           </div>
           <div class="col-md-9">
@@ -48,7 +49,7 @@
 					@endif
                   <div class="col-lg-8">
                     <h4 class="mb-4">Personal Information</h4>
-                    <form id="personalInformation" method="post" action="{{ url('/updateprofile') }}">@csrf
+                    <form id="personalInformation" method="post" enctype="multipart/form-data" action="{{ url('/updateprofile') }}">@csrf
                       <div class="mb-3">
                         <div class="custom-control custom-radio custom-control-inline">
                           <input id="male" name="gender" class="custom-control-input" value="male" @if(auth::user()->gender=='male') checked @endif required type="radio">
@@ -378,11 +379,26 @@
                   </div>
                 </div>  
      
-</div>
+			</div>
 
-<style>
+			<style>
 
-</style>
+			</style>
+              </div>
+               <div class="tab-pane fade" id="sixthTab" role="tabpanel" aria-labelledby="third-tab">
+                <h4 class="mb-4">Wallet Balance</h4>
+                <div class="table-responsive-lg">
+                  <table class="table table-hover border">
+                    <tbody>
+                      <tr>
+                      
+                        <td class="text-center align-middle">Amount: {{ auth::user()->amount }}</td>
+                       
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               
             </div>

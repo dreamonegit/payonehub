@@ -33,6 +33,7 @@
               <li class="nav-item"> <a class="nav-link" id="third-tab" data-toggle="tab" href="#thirdTab" role="tab" aria-controls="thirdTab" aria-selected="false">Favourites</a> </li>
               <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fourthTab" role="tab" aria-controls="fourthTab" aria-selected="false">Cards</a> </li>
               <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#fivthTab" role="tab" aria-controls="fivthTab" aria-selected="false">KYC</a> </li>
+			   <li class="nav-item"> <a class="nav-link" id="fourth-tab" data-toggle="tab" href="#sixthTab" role="tab" aria-controls="fivthTab" aria-selected="false">Wallet Balance</a> </li>
             </ul>
           </div>
           <div class="col-md-9">
@@ -378,11 +379,23 @@
                   </div>
                 </div>  
      
-</div>
+			</div>
 
-<style>
+			<style>
 
-</style>
+			</style>
+              </div>
+               <div class="tab-pane fade" id="sixthTab" role="tabpanel" aria-labelledby="third-tab">
+                <h4 class="mb-4">Wallet Balance</h4>
+                <div class="table-responsive-lg">
+                  <table class="table table-hover border">
+                    <tbody>
+                      <tr>
+                         <td class="text-center align-middle">Amount: {{ auth::user()->amount }}</td>
+                       </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               
             </div>

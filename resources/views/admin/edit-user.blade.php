@@ -78,6 +78,14 @@
                             <input type="text" name="amount" class="form-control" id="basic-icon-default-fullname" placeholder="Enter the Amount"aria-label="John Doe" aria-describedby="basic-icon-default-fullname2"value="@if(isset($users->amount)) {{ $users->amount }} @endif"/>
                           </div>
                         </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
+                        <select class="form-select" name="status" id="status" aria-label="Default select example">
+                          <option selected>---choose the status---</option>
+                          <option value="0" @if(isset($users))@if($users->status==0) {{ "selected" }} @endif @endif>Active</option>
+                          <option value="1" @if(isset($users))@if($users->status==1) {{ "selected" }} @endif @endif>In-Active</option>
+                        </select>
+                      </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
 						 <a href="{{ url('list-user') }}" class="btn btn-warning">Cancel</a>
                       </form>

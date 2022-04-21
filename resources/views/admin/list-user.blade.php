@@ -35,7 +35,8 @@
                         <th>Email</th>
 						<th>Mobile</th>
 						<th>Bank Account</th>
-                        <th>Amount</th>
+                        <th>Wallet Amount</th>
+						 <th>Status</th>
 						<th>Action</th>
                       </tr>
                     </thead>
@@ -49,7 +50,13 @@
 						<td>{{ $usersval->mobile }}</td>
 						<td>{{ $usersval->bank_account }}</td>
 						<td>{{ $usersval->amount }}</td>
-                        
+                        <td>
+							@if($usersval->status == '0')
+							<span class="badge bg-label-primary me-1">Active</span>
+							@elseif($usersval->status == '1')
+							<span class="badge bg-label-secondary me-1-">in-Active</span>
+							@endif
+						</td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

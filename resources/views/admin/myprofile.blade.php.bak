@@ -4,7 +4,7 @@
       <div class="layout-container">
         <!-- Menu -->
 
-		@include('layouts.admin.sidebar')
+		
         <!-- / Menu -->
 
         <!-- Layout container -->
@@ -27,7 +27,7 @@
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0">My Profile Details</h5>
+                      <h5 class="mb-0">My Profile</h5>
                     </div>
 				 <form class="form-horizontal" method="post" id="user" enctype="multipart/form-data" action="{{ Url('admin/updateprofile') }}">{{ csrf_field() }}
                     <div class="card-body">
