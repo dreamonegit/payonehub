@@ -85,12 +85,14 @@ class UserController extends Controller
 			$user->password = Hash::make($request->input('password'));
 			$user->save();
 			auth()->login($user);
-			$data = array('email'=>$request->input('email'),'name'=>$request->input('name'));
-			$mail = Mail::send('mail.registration', $data, function($message) use ($data) {
-				$message->to($data['email'], $data['name'])->subject
-				('Payhub Registration');
-				$message->from(env('MAIL_FROM_ADDRESS'),'');
-			});
+			if(env(MAILENV) == 'live'){
+				$data = array('email'=>$request->input('email'),'name'=>$request->input('name'));
+				$mail = Mail::send('mail.registration', $data, function($message) use ($data) {
+					$message->to($data['email'], $data['name'])->subject
+					('Payhub Registration');
+					$message->from(env('MAIL_FROM_ADDRESS'),'');
+				});
+			}
 			return Response::json(array(
 				'success' => true,
 				'message' => 'Successfully register please wait.....'
