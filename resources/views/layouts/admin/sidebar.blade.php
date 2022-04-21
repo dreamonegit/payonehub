@@ -43,7 +43,7 @@
               </a>
             </li>
             <li class="menu-item @if(Request::segment(2) == 'user') {{ 'active' }} @endif">
-              <a href="{{ url('/admin/user') }}" class="menu-link">
+              <a href="{{ url('/admin/list-user') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user-check"></i>
                 <div data-i18n="Account">User</div>
               </a>
@@ -82,12 +82,6 @@
                   <a href="{{ url('/admin/list-faqs') }}" class="menu-link">
 				  <i class="menu-icon tf-icons bx bx-message-alt-detail"></i>
                     <div data-i18n="Connections">FAQ</div>
-                  </a>
-                </li>
-				 <li class="menu-item">
-                  <a href="{{ url('/admin/list-user') }}" class="menu-link">
-				  <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div data-i18n="Connections">List User</div>
                   </a>
                 </li>
                 <li class="menu-item">

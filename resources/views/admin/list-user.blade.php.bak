@@ -35,7 +35,7 @@
                         <th>Email</th>
 						<th>Mobile</th>
 						<th>Bank Account</th>
-                        <th>Amount</th>
+                        <th>Wallet Amount</th>
 						 <th>Status</th>
 						<th>Action</th>
                       </tr>

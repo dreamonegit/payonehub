@@ -34,7 +34,6 @@
                         <th>Name</th>
                         <th>Email</th>
 						<th>Mobile</th>
-						<th>Bank Account</th>
                         <th>Wallet Amount</th>
 						 <th>Status</th>
 						<th>Action</th>
@@ -48,7 +47,6 @@
 						<td>{{ $usersval->name }}</td>
 						<td>{{ $usersval->email  }}</td>
 						<td>{{ $usersval->mobile }}</td>
-						<td>{{ $usersval->bank_account }}</td>
 						<td>{{ $usersval->amount }}</td>
                         <td>
 							@if($usersval->status == '0')
