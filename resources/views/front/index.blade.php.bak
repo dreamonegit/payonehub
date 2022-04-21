@@ -11,7 +11,7 @@
   <div id="content">
     <div class="hero-wrap py-4 py-md-5">
       <div class="hero-mask opacity-7 bg-dark"></div>
-      <div class="hero-bg" style="background-image:url('./images/bg/image-3.jpg');"></div>
+      <div class="hero-bg" style="background-image:url(asset('assets/front/images/bg/image-3.jpg')"></div>
       <div class="hero-content">
         <div class="container">
           <div class="row">
@@ -369,7 +369,7 @@
      <!-- Banner
     ============================================= -->
     <div class="bg-white shadow-md pt-0 pb-0">
-    <img class="img-fluid" src="images/slider/banner-12.jpg" alt="banner 5">    
+    <img class="img-fluid" src="{{ asset('assets/front/images/slider/banner-12.jpeg') }}" alt="banner 5">    
             </div><!-- Banner end -->
 
     
@@ -379,10 +379,10 @@
       <div class="container">
      <div class="row">
       <div class="col-lg-6">
-     <a href="#"><img class="img-fluid" src="images/slider/booking-banner-8.jpg" alt="banner 5"></a>
+     <a href="#"><img class="img-fluid" src="{{ asset('assets/front/images/slider/booking-banner-8.jpg') }}" alt="banner 5"></a>
       </div>
       <div class="col-lg-6">
-     <a href="#"><img class="img-fluid" src="images/slider/booking-banner-2.jpg" alt="banner 5"></a>
+     <a href="#"><img class="img-fluid" src="{{ asset('assets/front/images/slider/booking-banner-2.jpg') }}" alt="banner 5"></a>
       </div>
       </div>
       </div>
@@ -456,7 +456,7 @@
                 <p>On Metro Booking</p>
               </div>
               <div class="banner-mask"></div>
-              <img class="img-fluid" src="images/slider/small-banner-13-600x320.jpg" alt="banner"> </a> </div>
+              <img class="img-fluid" src="{{ asset('assets/front/images/slider/small-banner-13-600x320.jpg') }}" alt="banner"> </a> </div>
           </div>
           <div class="col-md-4 mt-4 mt-md-0">
             <div class="item rounded"> <a href="#">
@@ -465,7 +465,7 @@
                 <p>On electricity Bill Payment</p>
               </div>
               <div class="banner-mask"></div>
-              <img class="img-fluid" src="images/slider/small-banner-14-600x320.jpg" alt="banner"> </a> </div>
+              <img class="img-fluid" src="{{ asset('assets/front/images/slider/small-banner-14-600x320.jpg') }}" alt="banner"> </a> </div>
           </div>
           <div class="col-md-4 mt-4 mt-md-0">
             <div class="item rounded"> <a href="#">
@@ -474,7 +474,7 @@
                 <p>On DTH Recharge</p>
               </div>
               <div class="banner-mask"></div>
-              <img class="img-fluid" src="images/slider/small-banner-15-600x320.jpg" alt="banner"> </a> </div>
+              <img class="img-fluid" src="{{ asset('assets/front/images/slider/small-banner-15-600x320.jpg') }}" alt="banner"> </a> </div>
           </div>
         </div>
       </div>
@@ -520,11 +520,11 @@
     <!-- Mobile App
     ============================================= -->
     <section class="hero-wrap section pb-5 pb-lg-4">
-      <div class="hero-bg" style="background-image:url('./images/bg/image-5.jpg');"></div>
+      <div class="hero-bg" style="background-image:url(asset('assets/front/images/bg/image-5.jpg')"></div>
       <div class="hero-content">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 text-center"> <img class="img-fluid" alt="" src="images/app-mobile-2.png"> </div>
+            <div class="col-lg-6 text-center"> <img class="img-fluid" alt="" src="{{ asset('assets/front/images/app-mobile-2.png') }}"> </div>
             <div class="col-lg-6 text-center text-lg-left">
               <h2 class="text-9 font-weight-600 text-light my-4">Download Our PayONEHub<br class="d-none d-lg-inline-block">
                 Mobile App Now</h2>
@@ -546,10 +546,10 @@
       <div class="container">
      
         <div class="owl-carousel owl-theme banner">
-          <div class="item"><a href="#"><img class="img-fluid rounded" src="images/slider/small-banner-1.jpg" alt="banner" /></a></div>
-          <div class="item"><a href="#"><img class="img-fluid rounded" src="images/slider/small-banner-2.jpg" alt="banner" /></a></div>
-          <div class="item"><a href="#"><img class="img-fluid rounded" src="images/slider/small-banner-3.jpg" alt="banner" /></a></div>
-          <div class="item"><a href="#"><img class="img-fluid rounded" src="images/slider/small-banner-6.jpg" alt="banner" /></a></div>
+          <div class="item"><a href="#"><img class="img-fluid rounded" src="{{ asset('assets/front/images/slider/small-banner-1.jpg') }}" alt="banner" /></a></div>
+          <div class="item"><a href="#"><img class="img-fluid rounded" src="{{ asset('assets/front/images/slider/small-banner-2.jpg') }}" alt="banner" /></a></div>
+          <div class="item"><a href="#"><img class="img-fluid rounded" src="{{ asset('assets/front/images/slider/small-banner-3.jpg') }}" alt="banner" /></a></div>
+          <div class="item"><a href="#"><img class="img-fluid rounded" src="{{ asset('assets/front/images/slider/small-banner-6.jpg') }}" alt="banner" /></a></div>
         </div>
       </div>
     </div><!-- Banner end -->
