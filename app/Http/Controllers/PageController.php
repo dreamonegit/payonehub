@@ -373,7 +373,6 @@ class PageController extends Controller
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->mobile = $request->input('mobile');
-	    $user->bank_account = $request->input('bank_account');
         $user->amount = $request->input('amount');
 		$user->status = $request->input('status');
         $user->save();

@@ -106,10 +106,6 @@
                         <label for="address">Address</label>
                         <input id="birthDate" value="{{ auth::user()->address }}" name="address" type="text" class="form-control" required placeholder="Address">
                       </div>
-	                  <div class="form-group">
-                        <label for="bank">Bank Account</label>
-                        <input id="birthDate" value="{{ auth::user()->bank_account }}" name="bank_account" type="text" class="form-control" required placeholder="Bank Account">
-                      </div>
                       <button class="btn btn-primary" type="submit">Update Now</button>
                     </form>
                   </div>

@@ -107,7 +107,6 @@ class UserController extends Controller
 		$user->state = $request->input('state');
 		$user->city = $request->input('city');
 		$user->address = $request->input('address');
-		$user->bank_account = $request->input('bank_account');
 		$user->dream_id = $request->input('dream_id');
 		$image = $profile_images = '';   
 	   if ($request->file('profile_image')) {

@@ -391,11 +391,8 @@
                   <table class="table table-hover border">
                     <tbody>
                       <tr>
-                      
-                        <td class="text-center align-middle">Amount: {{ auth::user()->amount }}</td>
-                       
-                       
-                      </tr>
+                         <td class="text-center align-middle">Amount: {{ auth::user()->amount }}</td>
+                       </tr>
                     </tbody>
                   </table>
                 </div>
