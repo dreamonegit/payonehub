@@ -172,7 +172,7 @@
 </strong></span></p>
                               <p style="font-size: 14px; line-height: 170%;"><span style="font-size: 16px; line-height: 27.2px;"> 
                          We have received a request to forgot your PayOneHub account password.</p>
-<a href="#">Your password is : <h3>{{ $password }}</h3></a>  .
+<p style="font-size: 14px; line-height: 170%;"><span style="font-size: 16px; line-height: 27.2px;"> Your password is : <h3>{{ $password }}</h3></p>  .
 </br>
 
 </span></p>
