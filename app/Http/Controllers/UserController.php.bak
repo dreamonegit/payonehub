@@ -85,6 +85,12 @@ class UserController extends Controller
 			$user->password = Hash::make($request->input('password'));
 			$user->save();
 			auth()->login($user);
+			$data = array('mail'=>$request->input('email'),'name'=>$request->input('name'));
+			$mail = Mail::send('mail.registration', $data, function($message) {
+				$message->to($data['email'], $data['name'])->subject
+				('Forgot password');
+				$message->from(env('MAIL_FROM_ADDRESS'),'');
+			});
 			return Response::json(array(
 				'success' => true,
 				'message' => 'Successfully register please wait.....'
@@ -144,15 +150,22 @@ class UserController extends Controller
 			}else{
 				$newpassword = Helper::generatePassword(8);
 				$data = array('mail'=>$request->input('email'));
-				Mail::send('mail.forgot', $data, function($message) {
+				$mail = Mail::send('mail.forgot', $data, function($message) {
 					$message->to($data['email'], '')->subject
 					('Forgot password');
 					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
-				return Response::json(array(
-					'success' => false,
-					'errors' => array('Password send sucessfully in your mailbox pls check.....')
-				), 200);	
+				if($mail){
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Something went wrong pls try again....')
+					), 400);					
+				}else{
+					return Response::json(array(
+						'success' => false,
+						'errors' => array('Password send sucessfully in your mailbox pls check.....')
+					), 200);
+				}				
 			}				
 	}
 	public function updatekyc(Request $request){
@@ -195,7 +208,7 @@ class UserController extends Controller
 		$kycinformations->panfront = $panimagesfront;
 		$kycinformations->panback = $panimagespanback;
 		$kycinformations->save();	
-		return redirect()->back()->with('message', 'Successfully profile is update...');  		
+		return redirect()->back()->with('message', 'Successfully Kycinformation is update...');  		
 	}
 	public function logout(){
 		Auth::logout();
