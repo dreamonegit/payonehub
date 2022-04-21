@@ -156,7 +156,7 @@ class UserController extends Controller
 				$user->password = Hash::make($newpassword);
 				$user->save();
 				
-				if(env(MAILENV) == 'live'){
+				if(env('MAILENV') == 'live'){
 					$data = array('email'=>$request->input('email'),'password'=>$newpassword);
 					$mail = Mail::send('mail.forgot', $data, function($message) use ($data) {
 						$message->to($data['email'], '')->subject
