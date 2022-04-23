@@ -23,6 +23,7 @@ $(function() {
 $(document).ready(function() {
 	
     $('#loginForm').submit(function(event) { //Trigger on form submit
+		$('#login-action').prop('disabled', true).html('wait....');
         $('.throw_log_error').empty(); //Clear the messages first
         $('.throw_log_success').empty();
         var postForm = { //Fetch form data
@@ -36,6 +37,7 @@ $(document).ready(function() {
             data      : postForm, //Forms name
             dataType  : 'json',
             success   : function(data) {
+				$('#login-action').prop('disabled', false).html('Login');
 				$('.throw_log_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
 				setTimeout(function() {
 					location.reload();
@@ -45,6 +47,7 @@ $(document).ready(function() {
 				$.each(response.responseJSON.errors,function(field_name,error){
 					$('.throw_log_error').fadeIn(1000).append('<p>' +error+ '</p>');
 				});
+				$('#login-action').prop('disabled', false).html('Login');
 			},
         });
         event.preventDefault(); //Prevent the default submit
@@ -80,6 +83,7 @@ $(document).ready(function() {
         event.preventDefault(); //Prevent the default submit
     });
 	 $('#forgotForm').submit(function(event) { //Trigger on form submit
+			$('#forgot-action').prop('disabled', true).html('wait....');
 			$('.throw_error').empty(); //Clear the messages first
 			$('.throw_success').empty();
 			var postForm = { //Fetch form data
@@ -92,6 +96,7 @@ $(document).ready(function() {
 				data      : postForm, //Forms name
 				dataType  : 'json',
 				success   : function(data) {
+					$('#forgot-action').prop('disabled', false).html('Send Password to Mail');
 					$('.throw_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
 					setTimeout(function() {
 						//location.reload();
@@ -101,6 +106,7 @@ $(document).ready(function() {
 					$.each(response.responseJSON.errors,function(field_name,error){
 						$('.throw_error').fadeIn(1000).append('<p>' +error+ '</p>');
 					});
+					$('#forgot-action').prop('disabled', false).html('Send Password to Mail');
 				},
 			});
 			event.preventDefault(); //Prevent the default submit

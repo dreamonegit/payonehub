@@ -190,7 +190,7 @@
                 </div>
                  <div class="col-sm text-right"> <a class="justify-content-end" href="#" id="forgot">Forgot Password ?</a> </div>
               </div>
-              <button class="btn btn-primary btn-block" type="submit">Login</button>
+              <button class="btn btn-primary btn-block" id="login-action" type="submit">Login</button>
             </form>
           </div>
           <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
@@ -248,7 +248,7 @@
 			  </div>
 			  <span class="throw_error"></span>
 			  <span class="throw_success"></span>
-              <button class="btn btn-primary btn-block" type="submit">Send Password to Mail</button>
+              <button class="btn btn-primary btn-block" type="submit" id="forgot-action">Send Password to Mail</button>
             </form>
           </div>
         </div>
