@@ -85,7 +85,7 @@ class UserController extends Controller
 			$user->password = Hash::make($request->input('password'));
 			$user->save();
 			auth()->login($user);
-			if(env(MAILENV) == 'live'){
+			if(env('MAILENV') == 'live'){
 				$data = array('email'=>$request->input('email'),'name'=>$request->input('name'));
 				$mail = Mail::send('mail.registration', $data, function($message) use ($data) {
 					$message->to($data['email'], $data['name'])->subject
@@ -172,7 +172,7 @@ class UserController extends Controller
 				}else{
 					return Response::json(array(
 						'success' => false,
-						'errors' => array('Password send sucessfully in your mailbox pls check.....')
+						'message' => array('Password send sucessfully in your mailbox pls check.....')
 					), 200);
 				}				
 			}				
