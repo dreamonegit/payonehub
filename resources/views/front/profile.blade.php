@@ -133,13 +133,13 @@
                     <h4 class="mb-4">Change Password</h4>
                     <form id="changePassword" method="post" action="{{ url('updatepassword') }}">@csrf
                       <div class="form-group">
-                        <input type="text" class="form-control" name="current_password" data-bv-field="current_password" id="current_password" required placeholder="Existing Password">
+                        <input type="password" class="form-control" name="current_password" data-bv-field="current_password" id="current_password" required placeholder="Existing Password">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" name="new_password" data-bv-field="new_password" id="new_password" required placeholder="New Password">
+                        <input type="password" class="form-control" name="new_password" data-bv-field="new_password" id="new_password" required placeholder="New Password">
                       </div>
                       <div class="form-group">
-                        <input type="text" class="form-control" name="new_confirm_password" data-bv-field="new_confirm_password" id="new_confirm_password" required placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="new_confirm_password" data-bv-field="new_confirm_password" id="new_confirm_password" required placeholder="Confirm Password">
                       </div>
                       <button class="btn btn-primary" type="submit">Update Password</button>
                     </form>
