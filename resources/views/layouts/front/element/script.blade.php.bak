@@ -99,7 +99,7 @@ $(document).ready(function() {
 					$('#forgot-action').prop('disabled', false).html('Send Password to Mail');
 					$('.throw_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
 					setTimeout(function() {
-						location.reload();
+						//location.reload();
 					}, 3000);
 				},
 				error:function (response){
