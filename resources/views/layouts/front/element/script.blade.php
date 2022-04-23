@@ -54,6 +54,7 @@ $(document).ready(function() {
     });
 	
     $('#signupForm').submit(function(event) { //Trigger on form submit
+		$('#signup-action').prop('disabled', true).html('Wait....');
         $('.throw_error').empty(); //Clear the messages first
         $('.throw_success').empty();
         var postForm = { //Fetch form data
@@ -69,12 +70,14 @@ $(document).ready(function() {
             data      : postForm, //Forms name
             dataType  : 'json',
             success   : function(data) {
+				$('#signup-action').prop('disabled', false).html('Signup');
 				$('.throw_success').fadeIn(1000).append('<p>' + data.message + '</p>'); //If successful, than throw a success message
 				setTimeout(function() {
 					location.reload();
 				}, 3000);
 			},
 			error:function (response){
+				$('#signup-action').prop('disabled', false).html('Signup');
 				$.each(response.responseJSON.errors,function(field_name,error){
 					$('.throw_error').fadeIn(1000).append('<p>' +error+ '</p>');
 				});
