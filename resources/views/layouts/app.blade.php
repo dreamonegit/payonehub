@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
+
 </head>
 <body>
     <div id="app">
@@ -75,6 +78,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        
     </div>
 </body>
 </html>
