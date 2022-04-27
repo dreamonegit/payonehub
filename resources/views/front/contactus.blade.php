@@ -56,9 +56,7 @@
             <div class="featured-box style-1">
               <div class="featured-box-icon text-primary"> <i class="fas fa-map-marker-alt"></i></div>
               <h3>Quickai Inc.</h3>
-              <p>1st floor, 55, Balasundaram Rd, ATT Colony, 
-                    Gopalapuram, Coimbatore, Tamil Nadu 641018<br>
-                San Diego CA 2028 </p>
+              <p>1 st floor Aruna 55 ATT colony near Central RTO office<br> coimbatore-641018 </p>
             </div>
             <div class="featured-box style-1">
               <div class="featured-box-icon text-primary"> <i class="fas fa-phone"></i> </div>

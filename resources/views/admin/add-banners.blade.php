@@ -30,7 +30,7 @@
                       <h5 class="mb-0">Add Banners</h5>
                     </div>
 				 <form class="form-horizontal" method="post" name="banners" id="banners" enctype="multipart/form-data" action="{{ url('admin/save-banners') }}">{{ csrf_field() }}
-					@if(isset($faqs))
+					@if(isset($banners))
 					<input type="hidden" name="id" value="{{$banners->id}}">
 					@else
 					<input type="hidden" name="id" value="0">

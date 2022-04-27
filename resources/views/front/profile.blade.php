@@ -314,7 +314,7 @@
               
                <div class="tab-pane fade" id="fivthTab" role="tabpanel" aria-labelledby="fivth-tab">
                 <div class="formPage-each">
-   <div class="formPage-stuff" data-pagenumber-id="1" style="width: 100%; max-width: 752px; display: none;"></div>
+               <div class="formPage-stuff" data-pagenumber-id="1" style="width: 100%; max-width: 752px; display: none;"></div>
    
                 <div class="row">
 					@if (\Session::has('message'))
@@ -374,11 +374,8 @@
 					</div>
                   </div>
                 </div>  
-     
-			</div>
-
+              </div>
 			<style>
-
 			</style>
               </div>
                <div class="tab-pane fade" id="sixthTab" role="tabpanel" aria-labelledby="third-tab">
@@ -393,7 +390,6 @@
                   </table>
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
