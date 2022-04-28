@@ -180,6 +180,8 @@
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" name="logpassword" id="loginPassword" required placeholder="Password">
+                <span toggle="#password-field" class="fa fa-fw fa-eye fa-eye-slash field_icon toggle-password"></span>
+
               </div>
               <div class="row mb-4">
                 <div class="col-sm">

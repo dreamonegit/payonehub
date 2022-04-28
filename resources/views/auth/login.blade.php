@@ -37,6 +37,9 @@ body {
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
+                                <span toggle="#password-field" class="fa fa-fw fa-eye fa-eye-slash field_icon toggle-password"></span>
+
+
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -76,4 +79,13 @@ body {
         </div>
     </div>
 </div>
+<script>
+
+            $(document).on('click','.toggle-password',function(){
+                const type = $('#password').attr('type') === 'password' ? 'text' : 'password';
+                $('#password').attr('type', type);
+                // toggle the eye slash icon
+                this.classList.toggle('fa-eye-slash');
+            });
+        </script>
 @endsection

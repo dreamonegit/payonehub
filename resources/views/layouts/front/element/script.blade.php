@@ -124,4 +124,15 @@ $(document).on('click','.close',function(){
 	$('#login-forgot').removeClass('show').css('display','none').fadeOut(500);
 	$('#forgot-content').removeClass('show').removeClass('active');
 });
+
+
+$(document).on('click','.toggle-password',function(){
+	
+    $(this).toggleClass("fa-eye ");
+
+	const type = $('#loginPassword').attr('type') === 'password' ? 'text' : 'password';
+    $('#loginPassword').attr('type', type);
+    // toggle the eye slash icon
+    this.classList.toggle('fa-eye-slash');
+});
 </script>
