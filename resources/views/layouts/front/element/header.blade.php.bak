@@ -8,7 +8,7 @@
           
           <!-- Logo
           ============================================= -->
-          <div class="logo"> <a href="index.html" title="PayONEHub"><img src="{{ asset('assets/front/images/logo.png') }}" alt="PayONEHub" width="127" height="29" /></a> </div>
+          <div class="logo"> <a href="{{ url('/') }}" title="PayONEHub"><img src="{{ asset('storage/profileimage/'.auth::user()->profile_image) }}" alt="PayONEHub" width="127" height="29" /></a> </div>
           <!-- Logo end --> 
           
         </div>

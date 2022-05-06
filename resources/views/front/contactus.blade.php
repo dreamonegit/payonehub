@@ -26,7 +26,7 @@
            
  <div class="form-box">
   <h1>Contact Form</h1>
-  <form class="form-horizontal form-material" action="{{url('admin/save-contactus')}}" method="post" id="product" enctype="multipart/form-data">@csrf
+  <form class="form-horizontal form-material" action="{{url('admin/save-contactus')}}" method="post" id="contactus" enctype="multipart/form-data">@csrf
     <div class="form-group">
       <label for="name">Name</label>
       <input class="form-control" id="name" type="text" name="name">
@@ -75,5 +75,26 @@
   </div><!-- Content end -->
   
  @endsection
- 
+ <script>
+         $('#contactus').validate({ 
+            ignore: ".ignore",
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                  required: true,
+                },
+                mobile: {
+                    required: true
+                },
+            },
+            messages: {
+                name: "Enter the Name",
+                email: "Enter the Email",
+                mobile: "Enter the Mobile",
+                
+            }
+        });
+    </script>
 
