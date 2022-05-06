@@ -8,7 +8,7 @@
           
           <!-- Logo
           ============================================= -->
-          <div class="logo"> <a href="index.html" title="PayONEHub"><img src="{{ asset('assets/front/images/logo.png') }}" alt="PayONEHub" width="127" height="29" /></a> </div>
+          <div class="logo"> <a href="{{ url('/') }}" title="PayONEHub"><img src="{{ asset('assets/front/images/logo.png') }}" alt="PayONEHub" width="127" height="29" /></a> </div>
           <!-- Logo end --> 
           
         </div>
@@ -19,7 +19,7 @@
           <nav class="primary-menu navbar navbar-expand-lg">
             <div id="header-nav" class="collapse navbar-collapse">
               <ul class="navbar-nav">
-                <li class="dropdown active"> <a class="dropdown-toggle" href="#">Home</a>                  
+                <li class="dropdown active"> <a class="dropdown-toggle" href="{{ url('/') }}">Home</a>                  
                 </li>
                 <li class="dropdown"> <a class="dropdown-toggle" href="#">Recharge & Bill Payment</a>
                   <ul class="dropdown-menu">
